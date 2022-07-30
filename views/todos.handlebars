@@ -1,0 +1,22 @@
+<h1>This is the todos page</h1>
+
+<form class="row g-3">
+  <div class="col-auto">
+    <label for="todoInput" class="visually-hidden">What do you need to do?</label>
+    <input type="text" class="form-control" id="todoInput" placeholder="Walk the dog">
+  </div>
+  <div class="col-auto">
+    <button id="addTodoBtn" type="submit" class="btn btn-primary mb-3">Submit</button>
+  </div>
+</form>
+
+<ul>
+    {{#each todos as |todo|}}
+        <li>
+            <p>ID: {{todo.id}}</p>
+            <p>Todo: {{todo.todo}}</p>
+        </li>
+    {{/each}}
+</ul>
+
+<script src="/assets/js/todo.js"></script>
