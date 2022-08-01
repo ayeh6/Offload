@@ -2,7 +2,6 @@ const users = require('./users');
 const posts = require('./posts');
 const {User, Post, Favorite} = require('../models');
 const sequelize = require('../config/connection');
-const { post } = require('../routes/apiRoutes');
 
 const seeder = async () => {
     await sequelize.sync({force: true});
