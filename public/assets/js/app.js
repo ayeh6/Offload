@@ -11,14 +11,14 @@ signoutBtn?.addEventListener('click', async () => {
         });
 
         await response.json();
-        window.location.href = '/';
+        window.location.href = '/signup';
     } catch (error) {
         alert(error);
     }
 });
 
 
-signUpBtn.addEventListener('click', async (event) => {
+signUpBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
     const username = usernameInput.value;
     const password = passwordInput.value;

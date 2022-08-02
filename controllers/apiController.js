@@ -75,7 +75,7 @@ router.post('/signin', async (req, res) => {
 router.post('/signout', async (req, res) => {
     if(req.session.isLoggedIn){
         req.session.destroy(() => {
-            res.json({success: true});
+            res.redirect('/');
         });
     }
 });
