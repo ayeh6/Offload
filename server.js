@@ -5,7 +5,7 @@ const expsesh = require('express-session');
 
 const SequelizeStore = require('connect-session-sequelize')(expsesh.Store);
 const sequelize = require('./config/connection');
-const routes = require('./controllers/homepageController');
+const routes = require('./controllers/publicController');
 
 // handlebars helpers
 const helpers = require('./utils/helpers');

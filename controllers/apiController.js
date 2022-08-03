@@ -3,7 +3,11 @@ const bcrypt = require('bcryptjs');
 
 //return all posts
 const getPosts = async (req,res) => {
-
+    let test = {
+        test1: 'here',
+        test2: 'now',
+    }
+    res.json(JSON.parse(test));
 }
 
 //return post from input postID
