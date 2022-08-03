@@ -1,39 +1,41 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Todo extends Model {}
+class Comment extends Model {}
 
-Todo.init(
+Comment.init(
     {
-        id: {
+        commentID: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
         },
-        todo: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: true,
             },
         },
-        isCompleted: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: false,
+        postID: {
+            type: DataTypes.UUID,
+            references: {
+                model: 'posts',
+                key: 'postID',
+            },
         },
-        userId: {
+        userID: {
             type: DataTypes.UUID,
             references: {
                 model: 'users',
-                key: 'id',
+                key: 'userID',
             },
         }
     },
     {
         sequelize,
-        modelName: 'todos',
+        modelName: 'comments',
     }
 );
 
-module.exports = Todo;
+module.exports = Comment;
