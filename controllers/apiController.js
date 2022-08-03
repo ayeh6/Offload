@@ -17,20 +17,11 @@ const getPosts = async (req,res) => {
                 [
                     sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
                     'comment_count'
+                ],
+                [
+                    sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
+                    'username',
                 ]
-            ],
-            include: [
-                {
-                    model: User,
-                    attributes: {
-                        exclude: [
-                            'userID',
-                            'password',
-                            'createdAt',
-                            'updatedAt',
-                        ]
-                    }
-                },
             ]
         });
         res.status(200).json(allPosts);
@@ -57,7 +48,11 @@ const getPostFromID = async (req,res) => {
                     'lon',
                     [
                         sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
-                        'comment_count'
+                        'comment_count',
+                    ],
+                    [
+                        sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
+                        'username',
                     ]
                 ],
                 where: {
@@ -80,13 +75,20 @@ const getPostsFromUser = async (req,res) => {
         let input_username = req.params.username;
         if(input_username) {
             const user = await User.findOne({
-                attributes: [
-                    'username',
-                ],
                 include: [
                     {
                         model: Post,
                         attributes: {
+                            include: [
+                                [
+                                    sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
+                                    'comment_count',
+                                ],
+                                [
+                                    sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
+                                    'username',
+                                ]
+                            ],
                             exclude: [
                                 'userID',
                                 'createdAt',
@@ -94,10 +96,21 @@ const getPostsFromUser = async (req,res) => {
                             ]
                         }
                     }
-                ]
+                ],
+                attributes: {
+                    exclude: [
+                        'userID',
+                        'password',
+                        'createdAt',
+                        'updatedAt',
+                    ],
+                },
+                where: {
+                    username: input_username,
+                }
             });
-            const posts = user.dataValues.posts;
-            res.status(200).json(posts);
+            const posts = user.posts;
+            res.status(200).json(user.posts);
         } else {
             res.status(400).json("Error in getting posts from user, check parameters");
         }
@@ -173,44 +186,46 @@ const getFavoritePostsFromUser = async (req,res) => {
         const input_username = req.params.username;
         if(input_username) {
             const user = await User.findOne({
-                attributes: ['userID'],
-                where: {
-                    username: input_username
-                }
-            });
-
-            const favorites = await Favorite.findAll({
-                attributes: ['favoriteID'],
-                include: [
-                    {
+                include: {
+                    model: Favorite,
+                    as: 'favorites',
+                    include: {
                         model: Post,
                         attributes: {
-                            include: [
-                                [
-                                    sequelize.literal(`(SELECT username FROM users WHERE users.userID = post.userID)`),
-                                    'username'
-                                ],
-                                [
-                                    sequelize.literal(`(SELECT COUNT(*) FROM Comments WHERE post.postID = Comments.postID)`),
-                                    'comment_count'
-                                ]
-                            ],
                             exclude: [
                                 'userID',
-                                'description',
-                                'lat',
-                                'lon',
                                 'createdAt',
                                 'updatedAt',
+                            ],
+                            include: [
+                                [
+                                    sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE favorites.postID = comments.postID)`),
+                                    'comment_count'
+                                ],
+                                [
+                                    sequelize.literal(`(SELECT username FROM users, posts WHERE  favorites.postID = posts.postID AND posts.userID = users.userID)`),
+                                    'username'
+                                ],
                             ]
-                        },
+                        }
                     },
-                ],
+                    attributes: {
+                        exclude: [
+                            'userID',
+                            'postID',
+                            'postPostID',
+                            'userUserID',
+                            'createdAt',
+                            'updatedAt',
+                            'postUserID',
+                        ]
+                    },
+                },
                 where: {
-                    userID: user.userID,
+                    username: input_username,
                 }
             });
-            res.status(200).json(favorites);
+            res.status(200).json(user.favorites);
         } else {
             res.status(400).json("Error getting posts from user, check parameters");
         }

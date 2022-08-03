@@ -40,6 +40,13 @@ Post.hasMany(Image, {
     onDelete: 'CASCADE',
 });
 
+//user belongs to many posts as favorites, post belong to many users as favorites
+// User.belongsToMany(Post, {
+//     through: Favorite
+// });
+// Post.belongsToMany(User, {
+//     through: Favorite,
+// });
 
 //user has many favorites, favorite go to one user
 Favorite.belongsTo(User, {

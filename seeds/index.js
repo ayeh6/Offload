@@ -18,8 +18,9 @@ const seeder = async () => {
     //setting userID to each post
     let userindex = 0;
     for(let i=0; i<posts.length; i++) {
-        if(i == 3 || i == 5 || i == 9) {
-            userindex++;
+        userindex++;
+        if(userindex === allUsers.length) {
+            userindex = 0;
         }
         posts[i].userID = allUsers[userindex].dataValues.userID;
     }
