@@ -1,5 +1,6 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
+const {nanoid} = require('nanoid');
 
 class Comment extends Model {}
 
@@ -8,7 +9,7 @@ Comment.init(
         commentID: {
             type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: nanoid,
         },
         comment: {
             type: DataTypes.STRING,

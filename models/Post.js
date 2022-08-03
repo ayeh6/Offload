@@ -1,5 +1,8 @@
+//import { nanoid } from 'nanoid';
+
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
+const {nanoid} = require('nanoid');
 
 class Post extends Model {}
 
@@ -8,7 +11,7 @@ Post.init(
         postID: {
             type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: nanoid,
         },
         title: {
             type: DataTypes.STRING,

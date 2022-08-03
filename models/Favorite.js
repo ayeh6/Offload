@@ -1,3 +1,4 @@
+const { nanoid } = require('nanoid');
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -8,7 +9,7 @@ Favorite.init(
         favoriteID: {
             type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: nanoid,
         },
         postID: {
             type: DataTypes.UUID,

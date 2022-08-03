@@ -14,10 +14,18 @@ module.exports = router;
 
 /*
 
-/posts                      gets all posts
-/posts/:postID              gets certain post
-/comments/:postID           gets comments from postID
-/images/:postID             gets images from postID
-/users/:username/posts      gets posts from username
+/api/posts                      gets all posts
+/api/posts/:postID              gets certain post
+/api/comments/:postID           gets comments from postID
+/api/images/:postID             gets images from postID
+/api/users/posts/:username      gets posts from username
+/api/users/signin/              input is username password      post request
+/api/users/signout/             no input                        post request
+                                    if(req.session.isLoggedIn){
+                                        req.session.destroy(() => {
+                                            res.json({success: true});
+                                        });
+                                    }
+
 
 */
