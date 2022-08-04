@@ -18,7 +18,7 @@ signoutBtn?.addEventListener('click', async () => {
 });
 
 
-signUpBtn.addEventListener('click', async (event) => {
+signUpBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
     const username = usernameInput.value;
     const password = passwordInput.value;
@@ -49,7 +49,7 @@ signUpBtn.addEventListener('click', async (event) => {
 
         await response.json();
         // change user window to the /users endpoint
-        window.location.href = '/todos';
+        window.location.href = '/';
     } catch (error) {
         alert(error);
     }
