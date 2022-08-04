@@ -1,3 +1,4 @@
+const { nanoid } = require('nanoid');
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -8,7 +9,7 @@ Image.init(
         imgID: {
             type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: nanoid,
         },
         imgPath: {
             type: DataTypes.STRING,

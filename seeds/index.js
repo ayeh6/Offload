@@ -1,6 +1,7 @@
 const users = require('./users');
 const posts = require('./posts');
-const {User, Post, Favorite} = require('../models');
+const comments = require('./comments');
+const {User, Post, Favorite, Comment} = require('../models');
 const sequelize = require('../config/connection');
 
 const seeder = async () => {
@@ -17,8 +18,9 @@ const seeder = async () => {
     //setting userID to each post
     let userindex = 0;
     for(let i=0; i<posts.length; i++) {
-        if(i == 3 || i == 5 || i == 9) {
-            userindex++;
+        userindex++;
+        if(userindex === allUsers.length) {
+            userindex = 0;
         }
         posts[i].userID = allUsers[userindex].dataValues.userID;
     }
@@ -32,9 +34,11 @@ const seeder = async () => {
     });
     let favorites = [];
     let fav = {};
+    userindex = 0;
     for(let i=0; i<posts.length; i++) {
-        if(i == 3 || i == 5 || i == 9) {
-            userindex--;
+        userindex++;
+        if(userindex === allUsers.length) {
+            userindex = 0;
         }
         fav = {
             userID: allUsers[userindex].dataValues.userID,
@@ -45,6 +49,25 @@ const seeder = async () => {
 
     //seeding favorites
     await Favorite.bulkCreate(favorites);
+
+
+    //making comments
+    let postindex = 0;
+    userindex = 0;
+    for(let i=0; i<comments.length; i++) {
+        if(i !== 0 && i%3 === 0) {
+            postindex++;
+        }
+        userindex++;
+        if(userindex == allUsers.length) {
+            userindex = 0;
+        }
+        //console.log(`postindex: ${postindex}, userindex:${userindex}`);
+        comments[i].postID = allPosts[postindex].dataValues.postID;
+        comments[i].userID = allUsers[userindex].dataValues.userID;
+    }
+
+    await Comment.bulkCreate(comments);
 
     process.exit(0);
 };
