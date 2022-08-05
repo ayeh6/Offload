@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const expsesh = require('express-session');
-const cloudinary = require('cloudinary');
+
 
 const SequelizeStore = require('connect-session-sequelize')(expsesh.Store);
-const sequelize = require('../../Offload/config/connection');
-const routes = require('../../Offload/routes');
+const sequelize = require('./config/connection');
+const routes = require('./routes');
 
 // handlebars helpers
-const helpers = require('../../Offload/utils/helpers');
+const helpers = require('./utils/helpers');
 
 // handlebars init
 const hbs = exphbs.create({
