@@ -2,31 +2,31 @@ const fs = require('fs')
 const path = require('path');
 
 const getHomePage = function(req,res) {
-    res.render('dummy', {
+    res.render('content', {
     });
 
 }
 
 const getSignInPage = function(req,res) {
-    res.render('dummy', {
+    res.render('signin', {
     });
 }
 const getSignUpPage = function (req, res) {
-    res.render('dummy', {
+    res.render('signup', {
     });
 }
 const getUserPage = function(req,res) {
-    res.render('dummy', {
+    res.render('users', {
     });
 }
 
 const getUserSettings = function(req,res) {
-    res.render('dummy', {
+    res.render('settings', {
     });
 }
 
 const getPostPage = function(res,res) {
-    res.render('dummy', {
+    res.render('createPost', {
     });
 }
 

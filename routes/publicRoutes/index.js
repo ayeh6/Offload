@@ -10,7 +10,7 @@ const publicController = require('./../../controllers/publicController');
 
 */
 
-router.route('*').get(publicController.getHomePage);
+router.route('/').get(publicController.getHomePage);
 router.route('/signin').get(publicController.getSignInPage);
 router.route('/signup').get(publicController.getSignUpPage)
 router.route('/:username').get(publicController.getUserPage);
