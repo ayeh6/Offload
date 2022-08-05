@@ -1,21 +1,6 @@
 const usernameInput = document.getElementById('usernameInput');
 const passwordInput = document.getElementById('passwordInput');
 const signUpBtn = document.getElementById('signUpBtn');
-const signoutBtn = document.getElementById('signoutBtn');
-
-
-signoutBtn?.addEventListener('click', async () => {
-    try {
-        const response = await fetch('/api/signout', {
-            method: 'POST',
-        });
-
-        await response.json();
-        window.location.href = '/';
-    } catch (error) {
-        alert(error);
-    }
-});
 
 
 signUpBtn?.addEventListener('click', async (event) => {
