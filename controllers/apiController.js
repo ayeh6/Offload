@@ -1,6 +1,8 @@
 const {User, Post, Comment, Image, Favorite} = require('../models');
 const bcrypt = require('bcryptjs');
 const sequelize = require('sequelize');
+const { post } = require('../routes');
+const cloudinary = require('cloudinary');
 
 //return all posts
 const getPosts = async (req,res) => {
@@ -291,6 +293,67 @@ const signUpUser = async (req,res) => {
     }
 }
 
+const postImageToPost = async (req,res) => {
+    const imageID = req.body.imageID;
+    const imagePath = req.body.imagePath;
+    const postID = req.body.postID;
+    try {
+        const newImage = Image.create({
+            imageID: imageID,
+            imagePath: imagePath,
+            postID: postID,
+        });
+    } catch(e) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+}
+
+const deleteImage = async (req,res) => {
+    const imageID = req.params.imageID;
+    try {
+        await Image.destroy({
+            where: {
+                imageID: imageID
+            }
+        });
+        cloudinary.v2.api.resource(imageID, (error, result) => {
+            console.log(result, error);
+        });
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+}
+
+const deleteComment = async (req, res) => {
+    const commentID = req.params.commentID;
+    try {
+        await Comment.destroy({
+            where: {
+                commentID: commentID,
+            }
+        });
+    } catch(e) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+}
+
+const deletePost = async (req,res) => {
+    const postID = req.params.postID;
+    try {
+        await Post.destroy({
+            where: {
+                postID: postID,
+            }
+        });
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+}
+
 module.exports = {
     getPosts,
     getPostFromID,
@@ -300,5 +363,9 @@ module.exports = {
     getFavoritePostsFromUser,
     signInUser,
     signOutUser,
-    signUpUser
+    signUpUser,
+    postImageToPost,
+    deleteImage,
+    deleteComment,
+    deletePost,
 };
