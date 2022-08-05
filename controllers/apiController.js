@@ -356,7 +356,7 @@ const deleteImage = async (req,res) => {
                 imageID: imageID
             }
         });
-        cloudinary.v2.api.resource(imageID, (error, result) => {
+        cloudinary.v2.api.destroy(imageID, (error, result) => {
             console.log(result, error);
         });
     } catch(error) {
