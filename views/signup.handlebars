@@ -1,25 +1,45 @@
-<div class="row bg-warning d-flex justify-content-center">
-    {{!-- logo --}}
-    <div class="col-12 d-flex justify-content-center">
-        <img src="/assets/images/OffloadLogo.png" alt="Offload">
-    </div>
-    {{!-- Form --}}
-    <div class="col-12 d-flex justify-content-center">
-        <form>
-        <div class="mb-3">
-            <label for="usernameInput" class="form-label">Username</label>
-            <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">Please enter your username</div>
+ <section class="hero is-danger is-fullheight">
+        <button class="button is-danger is-large"><i class="fa-solid fa-house "></i></button>
+        <div class="hero-body">
+            <div class="">
+                <div class="container">
+                    <div class="columns has-text-centered is-v-centered">
+                        <div class="columns">
+                            <div class="column is-centered">
+                                <img src="Untitled_Artwork.png" alt="Offload">
+                                <p class="has-text-weight-bold">A Place To Get Rid Of Your Junk!</p>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <!-- <label class="label has-text-light has-text-weight-bold">Sign Up</label> -->
+                                        <!-- {{!-- got rid of emailhelp ID may need to relink --}} -->
+                                        <input type="text" id="signIninput" aria-describedby="signIninput"
+                                            placeholder="Username">
+                                    <p class="help">Enter User Name!</p>
+                                    </div>
+                                    
+                                    <div class="control">
+                                        <input type="password" id="signinPasswordInput" placeholder="Password">
+                                        <p class="help" id="passwordHelp">Enter your password! </br> 8-64
+                                            characters
+                                    </div>
+                                    
+                                    <input type="password" id="confirmPasswordInput" placeholder="Confirm Password">
+                                    <p class="help" id="passwordHelp">Please Re-Enter Password</p>
+                                  </div>  
+                                  
+                                <div class="column pt-2">
+                                    <input class="button is-white is-small" type="submit" value="Sign Up">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="passwordInput" class="form-label">Password</label>
-            <input type="password" class="form-control" id="passwordInput">
-        </div>
-        <button type="submit" class="btn btn-primary" id="signinBtn">Sign Un</button>
-        </form>
-    </div>
-    <div class="col-12 d-flex justify-content-center"></div>
-</div>
-
+    </section>
 {{!-- js --}}
 <script src="/assets/js/signup.js"></script>
