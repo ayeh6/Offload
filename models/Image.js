@@ -6,10 +6,13 @@ class Image extends Model {}
 
 Image.init(
     {
-        imgID: {
-            type: DataTypes.UUID,
+        imageID: {
+            type: DataTypes.STRING,
             primaryKey: true,
-            defaultValue: nanoid,
+            allowNull: false,
+            validate: {
+                notNull: true,
+            }
         },
         imgPath: {
             type: DataTypes.STRING,
@@ -20,6 +23,10 @@ Image.init(
         },
         postID: {
             type: DataTypes.UUID,
+            allowNull: false,
+            validate: {
+                notNull: true,
+            },
             references: {
                 model: 'posts',
                 key: 'postID',
