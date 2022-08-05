@@ -72,7 +72,7 @@ uploadBtn.addEventListener('click', async (event) => {
         const imagePath = result.info.url;
         // post the image id to the /api/images endpoint
         const data = {
-            imagID: request.body.image,
+            imageID: request.body.image,
           }
       
           // upload image here
