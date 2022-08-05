@@ -291,7 +291,47 @@ const signUpUser = async (req,res) => {
     }
 }
 
+const createNewPost = async (req,res) => {
+    try {
+        // Adds New post to the Database
+        // POST data: {title:, description: , userID}
+        const title = await(req.body.title)
+        console.log(title);
+        const description = await(req.body.description)
+        console.log(description);
+        const userId = await(req.body.userID)
+        console.log(userId);
+        const newPost = {title: title, description: description, userID: userId}
+        await Post.create(newPost);
+        res.status(200).json(newPost)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error}); 
+    }
+}
+
+const postNewComment = async (req,res) => {
+    try {
+        // Adds new comment to the database
+        // post data: { comment: 'String:, PostId: 'String', UserId:'String'
+        const comment = await(req.body.comment)
+        console.log(comment);
+        const postId = await(req.body.postID)
+        console.log(postId);
+        const userId = await(req.body.userID)
+        console.log(userId);
+        const newComment = {comment: comment, postID: postId, userID: userId}
+        await Comment.create(newComment);
+        res.status(200).json(newComment)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+};
+
 module.exports = {
+    createNewPost,
+    postNewComment,
     getPosts,
     getPostFromID,
     getPostsFromUser,

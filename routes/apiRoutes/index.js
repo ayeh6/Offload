@@ -15,12 +15,12 @@ module.exports = router;
 /*
 
 /api/posts                  GET         gets all posts                              DONE
-/api/posts                  POST        makes new post
+/api/posts                  POST        makes new post                              DONE
                                         {title, description, userID, lat, lon}
 /api/posts/:postID          GET         gets certain post                           DONE
 /api/posts/:postID          DELETE      deletes post with postID
 
-/api/comments               POST        makes new comment
+/api/comments               POST        makes new comment                           DONE
                                         {comment, postID, userID}
 /api/comments/:postID       GET         gets comments from postID                   DONE
 /api/comments/:commentID    DELETE      deletes comment with commentID
