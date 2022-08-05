@@ -17,5 +17,17 @@ if(process.env.JAWSDB_URL){
         }
     );
 }
-
+if(process.env.CLOUDINARY_URL){
+    sequelize = new Sequelize(process.env.CLOUDINARY_URL);
+// }else{
+//     sequelize = new Sequelize(
+//         process.env.CLOUD_NAME,
+//         process.env.API_KEY,
+//         process.env.API_SECRET,   
+//         {
+//             host: 'localhost',
+//             dialect: 'mysql',
+//         }
+//     );
+}
 module.exports = sequelize;

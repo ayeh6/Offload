@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const expsesh = require('express-session');
+const cloudinary = require('cloudinary');
 
 const SequelizeStore = require('connect-session-sequelize')(expsesh.Store);
 const sequelize = require('./config/connection');
