@@ -21,7 +21,7 @@ signUpBtn?.addEventListener('click', async (event) => {
 
     // posts the user input to the /api/signup endpoint
     try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch('/api/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

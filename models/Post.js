@@ -41,6 +41,10 @@ Post.init(
                 model: 'users',
                 key: 'userID',
             },
+        },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     },
     {
