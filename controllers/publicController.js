@@ -31,4 +31,9 @@ const getPostPage = function(res,res) {
 }
 
 
-module.exports = { getHomePage,getSignInPage,  getSignUpPage, getUserPage, getUserSettings, getPostPage};
+const getCreatePostPage = function(req,res) {
+    res.render('createPost', {
+    })
+}
+
+module.exports = { getHomePage, getSignInPage, getSignUpPage, getUserPage, getUserSettings, getPostPage, getCreatePostPage};
