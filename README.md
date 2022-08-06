@@ -114,7 +114,16 @@ node server
 
 ​
 ### What We learned
-​
+
+​Andrew:
+
+Daniel:
+
+Jack: 
+
+James:
+
+Michael:
 
 ​
 ### Continued development ###
@@ -143,8 +152,8 @@ node server
 
 ## Authors
 * [Andrew Yeh](http://andrewyeh.dev/)
-* [Daniel Holloway](https://github.com/VendettiStudios)
-* [Jack Youkstetter](https://github.com/JackYouk)
+* [Daniel Holloway](https://vendettistudios.github.io/Daniel-Holloway-UCB-Portfolio/)
+* [Jack Youkstetter](https://www.linkedin.com/in/jack-youkstetter-6b00a81a8/)
 * [James Montogmery](https://jmonty94.github.io/portfolio/)
 * [Michael Harris](https://snufalufakis.github.io/Profolio_xtralio/)
 
