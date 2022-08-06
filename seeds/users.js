@@ -2,10 +2,12 @@ module.exports = [
     {
         username: 'jackYouk',
         password: 'password1',
+        darkmode: true,
     },
     {
         username: 'jmonty94',
         password: 'password2',
+        darkmode: true,
     },
     {
         username: 'snufalufakis',
@@ -14,6 +16,7 @@ module.exports = [
     {
         username: 'vendettistudios',
         password: 'password4',
+        darkmode: false,
     },
     {
         username: 'ayeh6',
