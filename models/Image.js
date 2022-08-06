@@ -14,7 +14,7 @@ Image.init(
                 notNull: true,
             }
         },
-        imgPath: {
+        imagePath: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

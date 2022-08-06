@@ -1,8 +1,8 @@
-const uploadImgBtn = document.querySelector('#uploadImgBtn');
-const addTitleInput = document.querySelector('#addTitleInput');
-const addDescInput = document.querySelector('#addDescInput');
-const addLocationInput = document.querySelector('#addLocationInput');
-const createPostBtn = document.querySelector('#submitPostButton');
+const uploadImgBtn = document.getElementById('uploadImgBtn');
+const addTitleInput = document.getElementById('addTitleInput');
+const addDescInput = document.getElementById('addDescInput');
+const addLocationInput = document.getElementById('addLocationInput');
+const createPostBtn = document.getElementById('submitPostButton');
 
 const images = [];
 
@@ -32,3 +32,28 @@ uploadImgBtn.addEventListener('click', () => {
     myWidget.open();
 });
 
+createPostBtn.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const title = addTitleInput.value;
+    const description = addDescInput.value;
+    const location = addLocationInput.value;
+    const post = {
+        title: title,
+        description: description,
+        location: location,
+        images: images,
+    };
+    try {
+        const response = await fetch('/api/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(post),
+        });
+        await response.json();
+        window.location.href = '/content';
+    } catch(error) {
+        alert(error);
+    }
+});
