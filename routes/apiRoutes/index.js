@@ -15,18 +15,6 @@ module.exports = router;
 /*
 
 
-/api/posts                  GET         gets all posts                              DONE
-/api/posts                  POST        makes new post                              DONE
-
-/api/posts                  POST        makes new post
-
-                                        {title, description, userID, lat, lon}
-/api/posts/:postID          DELETE      deletes post with postID
-
-/api/comments               POST        makes new comment                           DONE
-                                        {comment, postID, userID}
-/api/comments/:commentID    DELETE      deletes comment with commentID
-
 /api/images                 POST        posts image to a post
                                         {imageID, imagePath, postID}
 /api/images/:postID         GET         gets images from postID                     DONE? needs testing

@@ -248,18 +248,21 @@ const signInUser = async (req,res) => {
         if(!existingUser) {
             return res.status(401).json({error: 'invalid credentials'});
         }
-
+        //console.log(existingUser);
         const passwordMatch = await bcrypt.compare(req.body.password, existingUser.password);
+        //console.log(passwordMatch);
 
         if(!passwordMatch) {
             return res.status(401).json({error: 'invalid credentials'});
+        } else {
+            //console.log('outside saving cookie');
+            req.session.save(() => {
+                //console.log("saving user to cookie");
+                req.session.user = existingUser;
+                req.session.isLoggedIn = true;
+                res.json({success: true});
+            });
         }
-
-        req.session.save(() => {
-            req.session.user = existingUser;
-            req.session.isLoggedIn = true;
-            res.json({success: true});
-        });
 
     } catch (error) {
         console.error(error);
@@ -286,7 +289,7 @@ const signUpUser = async (req,res) => {
             req.session.user = newUser;
             req.session.isLoggedIn = true;
             res.json(newUser);
-        })
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({error});
@@ -393,6 +396,28 @@ const deletePost = async (req,res) => {
     }
 }
 
+const updateUserPassword = async (req,res) => {
+    const newPassword = req.body.newPassword;
+    const confirmPassword = req.body.confirmPassword;
+    if(newPassword !== confirmPassword) {
+        return res.status(401).json("Passwords don't match");
+    }
+
+    //const currUser = req.session.user;
+    const currUser = await User.findOne({
+        where: {
+            userID: req.session.user.userID
+        }
+    });
+    //console.log(currUser);
+    const passwordMatch = await bcrypt.compare(req.body.currentPassword, currUser.password);
+
+    if(passwordMatch) {
+        await currUser.update({password: newPassword});
+        return res.json("true");
+    }
+}
+
 
 module.exports = {
     createNewPost,
@@ -410,4 +435,5 @@ module.exports = {
     deleteImage,
     deleteComment,
     deletePost,
+    updateUserPassword
 };

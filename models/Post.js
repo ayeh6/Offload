@@ -41,14 +41,6 @@ Post.init(
                 model: 'users',
                 key: 'userID',
             },
-        },
-        lat: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        lon: {
-            type: DataTypes.STRING,
-            allowNull: true,
         }
     },
     {
