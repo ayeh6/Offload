@@ -26,6 +26,10 @@ User.init(
                 notNull: true,
                 len: [6],
             }
+        },
+        darkmode: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     },
     {
