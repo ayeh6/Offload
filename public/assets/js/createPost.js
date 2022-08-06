@@ -39,6 +39,8 @@ uploadImgBtn?.addEventListener('click', async (event) => {
     }
     );
 
+    // POST REQUEST TO SAVE IMAGE TO THE DATABASE
+
     document.getElementById("upload_widget").addEventListener(
     "click",
     function () {
@@ -49,5 +51,13 @@ uploadImgBtn?.addEventListener('click', async (event) => {
 });
 
 addTitleBtn?.addEventListener('click', () => {
-    
+    const title = addTitleInput.value;
+
+    // POST REQUEST TO SAVE TITLE TO DATABASE
+});
+
+addDescBtn?.addEventListener('click', () => {
+    const desc = addDescInput.value;
+
+    // POST REQUEST TO SAVE Desc TO DATABASE
 });

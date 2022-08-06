@@ -26,7 +26,7 @@ const getUserSettings = function(req,res) {
 }
 
 const getPostPage = function(res,res) {
-    res.render('createPost', {
+    res.render('content', {
     });
 }
 
