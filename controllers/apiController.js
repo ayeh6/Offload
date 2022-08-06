@@ -298,15 +298,16 @@ const signUpUser = async (req,res) => {
 
 
 const createNewPost = async (req,res) => {
+    //{title, description, location, images: {image1, image2}}
     try {
         // Adds New post to the Database
-        // POST data: {title:, description: , userID}
+        // POST data: {title:, description: ,userID}
         const title = await(req.body.title)
-        console.log(title);
+        //console.log(title);
         const description = await(req.body.description)
-        console.log(description);
+        //console.log(description);
         const userId = await(req.body.userID)
-        console.log(userId);
+        //console.log(userId);
         const newPost = {title: title, description: description, userID: userId}
         await Post.create(newPost);
         res.status(200).json(newPost)
@@ -418,6 +419,14 @@ const updateUserPassword = async (req,res) => {
     }
 }
 
+const getImageCredentials = async (req,res) => {
+
+}
+
+const generatePostID = async (req,res) => {
+
+}
+
 
 module.exports = {
     createNewPost,
@@ -435,5 +444,6 @@ module.exports = {
     deleteImage,
     deleteComment,
     deletePost,
-    updateUserPassword
+    updateUserPassword,
+    getImageCredentials,
 };
