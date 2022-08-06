@@ -7,48 +7,40 @@
     {{!-- image upload --}}
     <div class="col-12 d-flex justify-content-center">
         {{!-- img upload cloudinary widget button--}}
-        <button id="uploadImgBtn">Upload Image</button>
-
-        {{!-- renders upladed image if it has been uploaded --}}
-        {{!-- {{#if hasUploadedImg}}
-            <img src="{{imgUrl}}" alt="Image" />
-        {{/if}} --}}
+        <button id="uploadImgBtn" type="button" class="btn btn-primary m-3">Upload Image</button>
     </div>
 
     {{!-- title --}}
-    <div class="col-12 d-flex justify-content-center">
-        <h3>Add Title</h3>
+    <div class="col-9 d-flex justify-content-center">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Add Title Here" id="addTitleInput" />
         </div>
     </div>
 
     {{!-- description --}}
-    <div class="col-12 d-flex justify-content-center">
-        <h3>Add Description</h3>
+    <div class="col-9 d-flex justify-content-center">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Add Description Here" id="addDescInput" />
         </div>
     </div>
 
     {{!-- Loaction --}}
-    <div class="col-12 d-flex justify-content-center">
-        <h3>Add Location</h3>
+    <div class="col-9 d-flex justify-content-center">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Add Location Here" id="addLocationBtn" />
         </div>
     </div>
 
     {{!-- All free? --}}
-    <div class="col-12 d-flex justify-content-center">
+    <div class="col-9 d-flex justify-content-center">
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="isFreeSwitch" checked>
-            <label class="form-check-label" for="isFreeSwitch">Every Item is Free [Unswitch if item costs are negotiable]</label>
+            <label class="form-check-label" for="isFreeSwitch">Every Item is Free</label>
         </div>
     </div>
 
     <div class="col-12 d-flex justify-content-center">
-        <button id="submitPostButton">Create Post</button>
+        <button id="submitPostButton" type="button" class="btn btn-primary m-3">Create Post</button>
     </div>
 </div>
 
