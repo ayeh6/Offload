@@ -1,5 +1,7 @@
-require('dotenv').config();
-const cloudinary = require('../../../server');
+// require('dotenv').config();
+// const cloudinary = require('../../../server');
+var cl = new cloudinary.Cloudinary({cloud_name: "offload", secure: true});
+
 
 const uploadImgBtn = document.querySelector('#uploadImgBtn');
 
@@ -9,11 +11,14 @@ const addTitleBtn = document.querySelector('#addTitleBtn');
 const addDescInput = document.querySelector('#addDescInput');
 const addDescBtn = document.querySelector('#addDescBtn');
 
-uploadImgBtn?.addEventListener('click', async (event) => {
-    const cloudName = process.env.CLOUD_NAME; // replace with your own cloud name
-    const uploadPreset = process.env.UPLOAD_PRESET; // replace with your own upload preset
+const addLocationInput = document.querySelector('#addLocationInput');
+const addLocationBtn = document.querySelector('#addLocationBtn');
 
-    const myWidget = cloudinary.createUploadWidget(
+uploadImgBtn?.addEventListener('click', async (event) => {
+    const cloudName = 'offload'; //process.env.CLOUD_NAME; // replace with your own cloud name
+    const uploadPreset = 'demo_test'; //process.env.UPLOAD_PRESET; // replace with your own upload preset
+
+    const myWidget = cl.createUploadWidget(
     {
         cloudName: cloudName,
         uploadPreset: uploadPreset,
@@ -41,7 +46,7 @@ uploadImgBtn?.addEventListener('click', async (event) => {
 
     // POST REQUEST TO SAVE IMAGE TO THE DATABASE
 
-    document.getElementById("upload_widget").addEventListener(
+    document.getElementById("upload_widget")?.addEventListener(
     "click",
     function () {
         myWidget.open();
@@ -58,6 +63,12 @@ addTitleBtn?.addEventListener('click', () => {
 
 addDescBtn?.addEventListener('click', () => {
     const desc = addDescInput.value;
+
+    // POST REQUEST TO SAVE Desc TO DATABASE
+});
+
+addLocationBtn?.addEventListener('click', () => {
+    const location = addLocationInput.value;
 
     // POST REQUEST TO SAVE Desc TO DATABASE
 });
