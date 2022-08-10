@@ -2,11 +2,36 @@ const fs = require('fs')
 const path = require('path');
 const {Post, Image, Comment} = require('../models');
 const sequelize = require('sequelize');
+const { post } = require('../routes');
 
 const getHomePage = async function(req,res) {
     // title, username, location
-    const postsData = await Post.findAll();
+    const postsData = await Post.findAll({
+        attributes: [
+            'postID',
+            'title',
+            'description',
+            'upvotes',
+            'downvotes',
+            [
+                sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
+                'comment_count'
+            ],
+            [
+                sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
+                'username',
+            ],
+            [
+                sequelize.literal(`(SELECT imagePath FROM images WHERE posts.postID = images.postID LIMIT 1)`),
+                'imagePath'
+            ]
+        ]
+    });
     const posts = postsData.map(post => post.get({plain: true}));
+    //console.log(posts);
+    for(let i=0; i<posts.length; i++) {
+        posts[i].votes = posts[i].upvotes - posts[i].downvotes;
+    }
     //console.log(posts);
     res.render('content', {
         // get posts from db
@@ -81,7 +106,7 @@ const getPostPage = async (req,res) => {
 
 const getCreatePostPage = function(req,res) {
     res.render('createPost', {
-    })
+    });
 }
 
 module.exports = { getHomePage, getSignInPage, getSignUpPage, getUserPage, getUserSettings, getPostPage, getCreatePostPage};

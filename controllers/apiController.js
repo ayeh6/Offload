@@ -14,8 +14,6 @@ const getPosts = async (req,res) => {
                 'description',
                 'upvotes',
                 'downvotes',
-                'lat',
-                'lon',
                 [
                     sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
                     'comment_count'
@@ -237,6 +235,7 @@ const getFavoritePostsFromUser = async (req,res) => {
 
 const signInUser = async (req,res) => {
     try {
+        console.log(req.body);
         const existingUser = await User.findOne({
             where: {
                 username: req.body.username
@@ -298,13 +297,8 @@ const signUpUser = async (req,res) => {
 const createNewPost = async (req,res) => {
     //{title, description, location, images: {image1, image2}}
     try {
-        // POST data: {title:, description: ,userID}
-        // const title = await(req.body.title)
-        // const description = await(req.body.description)
-        // const userId = await(req.body.userID)
-        // const newPost = {title: title, description: description, userID: userId}
-        // await Post.create(newPost);
-        console.log(req.body);
+        //console.log(req.body);
+        console.log(req.session.user);
         let newPost;
         const images = req.body.images;
         if(req.body.location === '') {
