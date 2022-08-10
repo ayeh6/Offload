@@ -1,41 +1,49 @@
-<input id="current-password-input" type="password" class="inputUserinfo" placeholder="currentPassword">
-</br>
-<input id="new-password-input" type="password" class="inputUserinfo" placeholder="newPassword">
-</br>
-<input id="confirm-password-input" type="password" class="inputUserinfo" placeholder="confirmNewpassword">
-</br>
-<button id="save-new-password-button">Save</button>
 
-<div>
-    <h3>About You</h3>
-    <input type="text" id="about-you-input" class="inputUserinfo" placeholder="About You">
-    <button id="save-about-you-button" class="save">Save</button>
-</div>
-<h4>Contact Sharing</h4>
-<input type="text" class="inputUserinfo" id="email-input" placeholder="Optional Share: Email">
-<input type="text" class="inputUserinfo" id="phone-number-input" placeholder="Optional Share: Phone #">
-<button id="save-contact-button">Save</button>
-
-{{!-- bottom bar w/ home,user,post --}}
-<nav class="navbar fixed-bottom bg-light">
-    <div class="d-flex justify-content-center">
-        {{!-- homepage --}}
-        <a class="m-2" href="/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                <path
-                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-            </svg>
-        </a>
-        {{!-- create a post --}}
-        <a class="m-2" href="/createPost">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-            </svg>
-        </a>
+<div class="align-items-center d-lg-grid pt-5">
+    <div class="container-fluid border rounded-2 border-dark border-2 shadow-lg bg-light bg-gradient justify-content-center">
+        <div class="container pt-4 pb-4">
+            
+            <h3>Change Password</h3>
+            <input id="current-password-input" type="text" class="inputUserinfo" placeholder="currentPassword">
+            </br>
+            <input id="new-password-input" type="text" class="inputUserinfo" placeholder="newPassword">
+            </br>
+            <input id="confirm-password-input" type="text" class="inputUserinfo" placeholder="confirmNewpassword">
+            </br>
+            <button class="save-new-password-button">Save</button>
+            <div class="pt-3">
+                <h3>About You</h3>
+                <input type="text" id="about-you-input" class="inputUserinfo" placeholder="About You">
+                <button id="save-about-you-button" class="save">Save</button>
+            </div>
+              <div class="pt-3">
+            <h4>Contact Sharing</h4>
+            <input type="text" class="inputUserinfo" id="email-input" placeholder="Optional Share: Email">
+            <input type="text" class="inputUserinfo" id="phone-number-input" placeholder="Optional Share: Phone #">
+            <button id="save-contact-button">Save</button></div>
+        </div>
+        {{!-- bottom bar w/ home,user,post --}}
+        <nav class="navbar fixed-bottom bg-light">
+            <div class="d-flex justify-content-center">
+                {{!-- homepage --}}
+                <a class="m-2" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                    </svg>
+                </a>
+                {{!-- create a post --}}
+                <a class="m-2" href="/createPost">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                    </svg>
+                </a>
+            </div>
     </div>
+</div>
 </nav>
 
 
