@@ -133,8 +133,7 @@ const getPostPage = async (req,res) => {
             'postID',
             'title',
             'description',
-            'upvotes',
-            'downvotes',
+            'location',
             [
                 sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
                 'username',
