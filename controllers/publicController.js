@@ -89,7 +89,7 @@ const getUserPage = async (req,res) => {
         }
     });
     const posts = postsData.map(post => post.get({plain: true}));
-    
+
     res.render('users', {
         signedIn,
         posts,
@@ -134,12 +134,28 @@ const getPostPage = async (req,res) => {
     const images = imagesQuery.map(image => image.get({plain: true}));
 
     const commentQuery = await Comment.findAll({
-        where: {
-            postID: postID
-        }
-    });
+        attributes: [
+                    'commentID',
+                    'comment',
+                ],
+                include: [
+                    {
+                        model: User,
+                        attributes: {
+                            exclude: [
+                                'userID',
+                                'password',
+                                'createdAt',
+                                'updatedAt',
+                            ]
+                        }
+                    },
+                ],
+                where: {
+                    postID: postID,
+                }
+            });
     const comments = commentQuery.map(comment => comment.get({plain: true}));
-
     console.log(comments);
 
     res.render('post', {
