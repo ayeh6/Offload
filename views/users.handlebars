@@ -1,7 +1,7 @@
 <div class="container">
-    <div>
-        <h1>{{user.username}}</h1>
-        <h1>About You</h1>
+    <div class="bg-secondary my-5 rounded-5 row text-center">
+        <h1 class="my-3 text-capitalize">{{user.username}}</h1>
+        <h1>About Me</h1>
         <p>{{user.about}}</p>
         <h3>Phone</h3>
         <p>{{user.phone}}</p>
@@ -10,14 +10,14 @@
     </div>
     <div class="activePosts row">
         <div class="my-1 text-center">
-            <h1> Posts</h1>
+            <h1>My Posts</h1>
         </div>
         {{#each posts as |post|}}
                 <div class="card m-3" style="width: 18rem;">
                     {{#if post.imagePath}}
-                    <img class="card-img-top" src="{{post.imagePath}}" alt="Card image cap">
+                    <img class="card-img-top rounded-5 my-2" src="{{post.imagePath}}" alt="Card image cap">
                     {{/if}}
-                    <div class="card-body">
+                    <div class="bg-opacity-25 bg-secondary card-body rounded-pill text-break text-center">
                         <p class="card-text">
                             <a href="/posts/{{post.postID}}">{{post.title}}</a>
                         </p>

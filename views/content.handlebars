@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row justify-content-center">
         {{#each posts as |post|}}
-        <div class="card m-3" style="width: 18rem;">
+        <div class="card m-3 bg-gradient justify-content-center" style="width: 18rem;">
             {{#if post.imagePath}}
-            <img class="card-img-top" src="{{post.imagePath}}" alt="Card image cap">
+            <img class="card-img-top rounded-5 my-2" src="{{post.imagePath}}" alt="Card image cap">
             {{/if}}
-            <div class="card-body">
+            <div class="bg-opacity-25 bg-secondary card-body rounded-pill text-break text-center">
                 <p class="card-text">
                     <a href="/posts/{{post.postID}}">{{post.title}}</a>
                 </p>
