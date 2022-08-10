@@ -134,27 +134,30 @@ const getPostPage = async (req,res) => {
     const images = imagesQuery.map(image => image.get({plain: true}));
 
     const commentQuery = await Comment.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ],
         attributes: [
                     'commentID',
                     'comment',
                 ],
-                include: [
-                    {
-                        model: User,
-                        attributes: {
-                            exclude: [
-                                'userID',
-                                'password',
-                                'createdAt',
-                                'updatedAt',
-                            ]
-                        }
-                    },
-                ],
-                where: {
-                    postID: postID,
+        include: [
+            {
+                model: User,
+                attributes: {
+                    exclude: [
+                        'userID',
+                        'password',
+                        'createdAt',
+                        'updatedAt',
+                    ]
                 }
-            });
+            },
+        ],
+        where: {
+            postID: postID,
+        }
+    });
     const comments = commentQuery.map(comment => comment.get({plain: true}));
     console.log(comments);
 
