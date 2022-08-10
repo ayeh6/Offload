@@ -17,18 +17,20 @@
         <div class="container">
             <div class="my-2 row">
                 <div class="col-12 d-flex justify-content-between">
-                    <button id="settingsButton" class="btn btn-secondary col-auto settings"><i
+                    {{#if signedIn}}
+                    <button id="settings-button-header" class="btn btn-secondary col-auto settings"><i
                             class="bi bi-gear"></i></button>
+                    {{/if}}
                     <div class="d-flex justify-content-center">
                         {{!-- logo --}}
                         <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" class="img-fluid"/>
                     </div>
                     {{#if signedIn}}
-                    <button id="signoutBtn" class="btn btn-secondary col-auto"><i
+                    <button id="sign-out-button-header" class="btn btn-secondary col-auto"><i
                             class="bi bi-door-closed-fill"></i></button>
                     {{else}}
-                    <button id="signupBtn"></button>
-                    <button id="signinBtn"></button>
+                    <button id="sign-in-button-header" class="btn btn-secondary col-auto">Sign In</button>
+                    <button id="sign-up-button-header" class="btn btn-secondary col-auto">Sign Up</button>
                     {{/if}}
                 </div>
             </div>
@@ -39,7 +41,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
         </script>
-    <script src="/assets/js/settingsButton.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 
 </html>

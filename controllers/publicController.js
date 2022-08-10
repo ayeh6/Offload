@@ -5,7 +5,7 @@ const sequelize = require('sequelize');
 const { post } = require('../routes');
 
 const getHomePage = async function(req,res) {
-    // title, username, location
+    const signedIn = req.session.isLoggedIn;
     const postsData = await Post.findAll({
         attributes: [
             'postID',
@@ -35,7 +35,8 @@ const getHomePage = async function(req,res) {
     //console.log(posts);
     res.render('content', {
         // get posts from db
-        posts
+        posts,
+        signedIn
     });
 }
 
@@ -48,12 +49,16 @@ const getSignUpPage = function (req, res) {
     });
 }
 const getUserPage = function(req,res) {
+    const signedIn = req.session.isLoggedIn;
     res.render('users', {
+        signedIn,
     });
 }
 
 const getUserSettings = function(req,res) {
+    const signedIn = req.session.isLoggedIn;
     res.render('profile', {
+        signedIn
     });
 }
 
@@ -105,7 +110,9 @@ const getPostPage = async (req,res) => {
 
 
 const getCreatePostPage = function(req,res) {
+    const signedIn = req.session.isLoggedIn;
     res.render('createPost', {
+        signedIn
     });
 }
 

@@ -1,12 +1,11 @@
-const usernameInput = document.getElementById('usernameInput');
-const passwordInput = document.getElementById('passwordInput');
-const signUpBtn = document.getElementById('signUpBtn');
+const usernameInputEl = document.getElementById('username-input');
+const passwordInputEl = document.getElementById('password-input');
+const signUpBtn = document.getElementById('sign-up-button');
 
-
-signUpBtn?.addEventListener('click', async (event) => {
+const signUpUser = async (event) => {
     event.preventDefault();
-    const username = usernameInput.value;
-    const password = passwordInput.value;
+    const username = usernameInputEl.value;
+    const password = passwordInputEl.value;
 
     // checks to make sure username is not empty
     if(username.trim().length === 0){
@@ -38,5 +37,7 @@ signUpBtn?.addEventListener('click', async (event) => {
     } catch (error) {
         alert(error);
     }
-});
+}
+
+signUpBtn?.addEventListener('click', signUpUser);
 

@@ -285,7 +285,7 @@ const signUpUser = async (req,res) => {
         req.session.save(() => {
             req.session.user = newUser;
             req.session.isLoggedIn = true;
-            res.json(newUser);
+            res.json({success: true});
         });
     } catch (error) {
         console.error(error);
