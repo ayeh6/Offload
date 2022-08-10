@@ -5,6 +5,10 @@ const sequelize = require('sequelize');
 
 const getHomePage = async function(req,res) {
     const signedIn = req.session.isLoggedIn;
+    let currUsername;
+    if(req.session.user) {
+        currUsername = (req.session.user.username) ? req.session.user.username : undefined;
+    }
     const postsData = await Post.findAll({
         attributes: [
             'postID',
@@ -35,7 +39,8 @@ const getHomePage = async function(req,res) {
     res.render('content', {
         // get posts from db
         posts,
-        signedIn
+        signedIn,
+        currUsername,
     });
 }
 
@@ -49,6 +54,10 @@ const getSignUpPage = function (req, res) {
 }
 const getUserPage = async (req,res) => {
     const signedIn = req.session.isLoggedIn;
+    let currUsername;
+    if(req.session.user) {
+        currUsername = (req.session.user.username) ? req.session.user.username : undefined;
+    }
 
     const username = req.params.username;
     const userData = await User.findOne({
@@ -93,20 +102,32 @@ const getUserPage = async (req,res) => {
     res.render('users', {
         signedIn,
         posts,
-        user
+        user,
+        currUsername,
     });
 }
 
 const getUserSettings = function(req,res) {
     const signedIn = req.session.isLoggedIn;
+    let currUsername;
+    if(req.session.user) {
+        currUsername = (req.session.user.username) ? req.session.user.username : undefined;
+    }
+
     res.render('settings', {
-        signedIn
+        signedIn,
+        currUsername,
     });
 }
 
 const getPostPage = async (req,res) => {
     const postID = req.params.postID;
     const signedIn = req.session.isLoggedIn;
+    let currUsername;
+    if(req.session.user) {
+        currUsername = (req.session.user.username) ? req.session.user.username : undefined;
+    }
+
     const postQuery = await Post.findOne({
         attributes: [
             'postID',
@@ -165,19 +186,26 @@ const getPostPage = async (req,res) => {
         post,
         images,
         comments,
-        signedIn
+        signedIn,
+        currUsername,
     });
 }
 
 
 const getCreatePostPage = function(req,res) {
     const signedIn = req.session.isLoggedIn;
+    let currUsername;
+    if(req.session.user) {
+        currUsername = (req.session.user.username) ? req.session.user.username : undefined;
+    }
+
     console.log(signedIn);
     if(signedIn === undefined || signedIn === false) {
         return res.status(400).json("you need to be signed in");
     } else {
         res.render('createPost', {
-            signedIn
+            signedIn,
+            currUsername,
         });
     }
 }

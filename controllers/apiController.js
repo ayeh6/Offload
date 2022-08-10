@@ -342,9 +342,14 @@ const postNewComment = async (req,res) => {
         //console.log(postId);
         const userId = req.session.user.userID;
         //console.log(userId);
-        const newComment = {comment: comment, postID: postId, userID: userId}
-        await Comment.create(newComment);
-        res.status(200).json(newComment)
+        if(userId === undefined) {
+            res.status(400).json("you need to be signed in");
+        } else {
+            const newComment = {comment: comment, postID: postId, userID: userId};
+            await Comment.create(newComment);
+            res.status(200).json(newComment);
+        }
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({error});
