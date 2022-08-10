@@ -3,7 +3,7 @@
         <div class="col-12 d-flex justify-content-between">
             <button class="btn btn-secondary col-auto settings"><i class="bi bi-gear"></i></button>
             <div class="d-flex justify-content-center">
-                        {{!-- logo --}}
+                {{!-- logo --}}
                 <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" />
             </div>
             <button id="signoutBtn" class="btn btn-secondary col-auto"><i class="bi bi-door-closed-fill"></i></button>
@@ -17,12 +17,30 @@
             <div class="card">
                 <h5 class="card-header">{{postTitle}}</h5>
                 <div class="card-body">
+                    {{!-- upvote/downvote btns --}}
+                    <div>
+                        {{!-- upvote btn --}}
+                        <button id="upvote" type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                            </svg>
+                        </button>
+                        {{!-- downvote btn --}}
+                        <button id="downvote" type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                            </svg>
+                        </button>
+                    </div>
                     <img src="{{postImgUrl}}" alt="posted img" />
                     <p class="card-text">{{postDescription}}</p>
                     <a href="{{routeToPostersProfile}}" class="btn btn-primary">Posted by {{postersUsername}}</a>
                 </div>
             </div>
-            {{!-- {{/for}} --}}
         </div>
     </div>
     {{!-- bottom bar w/ home,user,post --}}

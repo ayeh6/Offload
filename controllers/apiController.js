@@ -300,16 +300,39 @@ const signUpUser = async (req,res) => {
 const createNewPost = async (req,res) => {
     //{title, description, location, images: {image1, image2}}
     try {
-        // Adds New post to the Database
         // POST data: {title:, description: ,userID}
-        const title = await(req.body.title)
-        //console.log(title);
-        const description = await(req.body.description)
-        //console.log(description);
-        const userId = await(req.body.userID)
-        //console.log(userId);
-        const newPost = {title: title, description: description, userID: userId}
-        await Post.create(newPost);
+        // const title = await(req.body.title)
+        // const description = await(req.body.description)
+        // const userId = await(req.body.userID)
+        // const newPost = {title: title, description: description, userID: userId}
+        // await Post.create(newPost);
+        console.log(req.body);
+        let newPost;
+        const images = req.body.images;
+        if(req.body.location === '') {
+            newPost = await Post.create({
+                title: req.body.title,
+                description: req.body.description,
+                userID: req.session.user.userID,
+            });
+        } else {
+            newPost = await Post.create({
+                title: req.body.title,
+                description: req.body.description,
+                location: req.body.location,
+                userID: req.session.user.userID,
+            });
+        }
+        console.log(newPost.postID);
+        if(images.length > 0) {
+            for(let i=0; i<images.length; i++) {
+                await Image.create({
+                    postID: newPost.postID,
+                    imageID: images[i].imageID,
+                    imagePath: images[i].imagePath,
+                });
+            }
+        }
         res.status(200).json(newPost)
     } catch (error) {
         console.error(error);
