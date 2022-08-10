@@ -1,8 +1,13 @@
 const fs = require('fs')
 const path = require('path');
+const {Post} = require('../models');
 
-const getHomePage = function(req,res) {
+const getHomePage = async function(req,res) {
+    const postsData = await Post.findAll();
+    const posts = postsData.map(post => post.get({plain: true}));
     res.render('content', {
+        // get posts from db
+        posts
     });
 }
 
