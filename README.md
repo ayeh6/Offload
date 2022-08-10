@@ -130,6 +130,8 @@ Michael:
 
 #### Some ideas we have for version 2.0 are: ####
 
+- Dark Mode option for users
+
 - Implement User email into sign up and allow Google Auth
 
 - Implement a Map functionality to allow users to check their local
