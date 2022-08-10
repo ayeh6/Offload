@@ -13,6 +13,7 @@ Post.init(
             primaryKey: true,
             defaultValue: nanoid,
         },
+        // img url
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -42,6 +43,7 @@ Post.init(
                 key: 'userID',
             },
         },
+        // username
         location: {
             type: DataTypes.STRING,
             allowNull: true,

@@ -1,60 +1,56 @@
-<div class="row d-flex justify-content-center">
-    {{!-- logo --}}
-    <div class="col-12 d-flex justify-content-center">
-        <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" />
-    </div>
-
-    {{!-- posts --}}
-    <div class="col-10">
-        {{!-- foreach card --}}
-        {{!-- {{#each}} --}}
-            <div class="card">
-                <h5 class="card-header">{{postTitle}}</h5>
-                <div class="card-body">
-                    {{!-- upvote/downvote btns --}}
-                    <div>
-                        {{!-- upvote btn --}}
-                        <button id="upvote" type="button" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                            </svg>
-                        </button>
-                        {{!-- downvote btn --}}
-                        <button id="downvote" type="button" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <img src="{{postImgUrl}}" alt="posted img" />
-                    <p class="card-text">{{postDescription}}</p>
-                    <a href="{{routeToPostersProfile}}" class="btn btn-primary">Posted by {{postersUsername}}</a>
-                </div>
+<div class="container">
+    <div class="my-2 row">
+        <div class="col-12 d-flex justify-content-between">
+            <button class="btn btn-secondary col-auto settings"><i class="bi bi-gear"></i></button>
+            <div class="d-flex justify-content-center">
+                        {{!-- logo --}}
+                <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" />
             </div>
-        {{!-- {{/each}} --}}
+            <button id="signoutBtn" class="btn btn-secondary col-auto"><i class="bi bi-door-closed-fill"></i></button>
+        </div>
     </div>
-
+    <div class="row">
+        {{!-- posts --}}
+        <div class="col-12 d-flex justify-content-center">
+            {{#each posts as |post|}}
+                <div class="card">
+                <h5 class="card-header">{{post.title}}</h5>
+                <div class="card-body">
+                    <p class="card-text">{{post.description}}</p>
+                    <p>Posted By: {{post.userID}}</p>
+                    <p>Location: {{post.location}}</p>
+                </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
     {{!-- bottom bar w/ home,user,post --}}
-    <nav class="navbar fixed-bottom bg-light">
+    <nav class="bg-light fixed-bottom justify-content-around navbar">
         <div class="d-flex justify-content-center">
             {{!-- homepage --}}
-            <a class="m-2" href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+            <a class="m-2 mx-5" href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
                 </svg>
             </a>
             {{!-- create a post --}}
-            <a class="m-2" href="/createPost">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+            <a class="m-2 mx-5" href="/createPost">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                 </svg>
             </a>
             {{!-- user profile page --}}
-            <a class="m-2" href="/profile/{{username}}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+            <a class="m-2 mx-5" href="/profile/{{username}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                 </svg>
             </a>
         </div>
