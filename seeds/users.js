@@ -12,6 +12,7 @@ module.exports = [
         darkmode: true,
         phone: '14153289486',
         email: 'jpmontgomery400@gmail.com',
+        about: 'I am James'
     },
     {
         username: 'snufalufakis',

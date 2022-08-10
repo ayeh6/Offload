@@ -130,6 +130,8 @@ Michael:
 
 #### Some ideas we have for version 2.0 are: ####
 
+- Finish free tag functionality
+
 - Finish front end of Votes system
 
 - Dark Mode option for users
