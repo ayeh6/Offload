@@ -29,7 +29,10 @@
         {{/each}}
     </div>
     <div id="comment-section">
-        <input type="text" id="comment-input"/>
+        <div>
+            <input type="text" id="comment-input"/>
+            <button id="comment-button">Submit</button>
+        </div>
         <div id="comments">
             {{#each comments as |comment|}}
                 <div>
@@ -40,3 +43,5 @@
         </div>
     </div>
 </div>
+
+<script src="/assets/js/post.js"></script>
