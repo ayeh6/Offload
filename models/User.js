@@ -13,7 +13,7 @@ User.init(
             defaultValue: nanoid,
         },
         username: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(32),
             allowNull: false,
             validate: {
                 notNull: true,
