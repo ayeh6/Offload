@@ -29,15 +29,18 @@ User.init(
         },
         about: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
+            defaultValue: "(empty)"
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: "N/A",
         },
         email: {
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: "N/A",
         },
         darkmode: {
             type: DataTypes.BOOLEAN,

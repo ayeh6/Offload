@@ -10,5 +10,6 @@ router.route('/signout').post(apiController.signOutUser);
 router.route('/signup').post(apiController.signUpUser);
 router.route('/posts/:username/').get(apiController.getPostsFromUser);
 router.route('/favorites/:username').get(apiController.getFavoritePostsFromUser);
+router.route('/').post(apiController.getUserInfo);
 
 module.exports = router;

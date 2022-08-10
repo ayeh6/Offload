@@ -18,15 +18,22 @@ const changePassword = async (event) => {
         newPassword: inputNewPasswordEl.value,
         confirmPassword: inputConfirmPasswordEl.value
     }
-    const response = await fetch('/api/users/password', {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newPasswordBody)
-    });
+    try {
+        const response = await fetch('/api/users/password', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newPasswordBody)
+        });
 
-    await response.json();
+        await response.json();
+        window.location.reload();
+        alert("Your password has been changed successfully");
+    } catch(error) {
+        console.log(error);
+        alert("An error has occured");
+    }
 }
 
 const updateAboutYou = async (event) => {
@@ -34,15 +41,21 @@ const updateAboutYou = async (event) => {
     const aboutYou = {
         aboutYou: inputAboutYouEl.value,
     };
-    const response = await fetch('/api/users/aboutyou', {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(aboutYou)
-    });
-
-    await response.json();
+    try {
+        const response = await fetch('/api/users/aboutyou', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(aboutYou)
+        });
+        await response.json();
+        window.location.reload();
+        alert("Your about information has been updated");
+    } catch(error) {
+        console.log(error);
+        alert("An error has occured");
+    }
 }
 
 const updateContactInfo = async (event) => {
@@ -51,15 +64,22 @@ const updateContactInfo = async (event) => {
         email: inputEmailEl.value,
         phone: inputPhoneNumberEl.value,
     }
-    const response = await fetch('/api/users/contact', {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contactInfo)
-    });
+    try {
+        const response = await fetch('/api/users/contact', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(contactInfo)
+        });
 
-    await response.json();
+        await response.json();
+        window.location.reload();
+        alert("Your contact info has been updated successfully");
+    } catch(error) {
+        console.log(error);
+        alert("An error has occured");
+    }
 }
 
 savePasswordButtonEl.addEventListener("click", changePassword);
