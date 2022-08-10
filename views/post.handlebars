@@ -1,68 +1,77 @@
-<div class="row">
-    <div id="post">
-        <div id="topbar">
-            <div id="title-username">
-                <div id="title">
-                    <h1>{{post.title}}</h1>
-                </div>
-                <div id="username">
-                    <h3><a href="/{{post.username}}">{{post.username}}</a></h3>
+<div class="container d-lg-grid pt-5 text-center">
+    <div
+        class="bg-gradient bg-opacity-75 bg-secondary border border-2 border-dark justify-content-center rounded-2 row shadow-lg">
+        <div id="post">
+            <div id="topbar">
+                <div id="title-username" class="col-7 m-auto">
+                    <div id="title" class="text-capitalize text-break">
+                        <h1>{{post.title}}</h1>
+                    </div>
+                    <div id="username">
+                        <h3><a href="/{{post.username}}">{{post.username}}</a></h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="description">
-            <p>{{post.description}}</p>
-        </div>
-    </div>
-    <div id="images">
-        {{#each images as |image|}}
-        <img src='{{image.imagePath}}' class="img-fluid" />
-        {{/each}}
-    </div>
-    <div id="comment-section">
-        <div>
-            <input type="text" id="comment-input" />
-            <button id="comment-button">Submit</button>
-        </div>
-        <div id="comments">
-            {{#each comments as |comment|}}
-            <div>
-                <p>{{comment.user.username}}</p>
-                <p>{{comment.comment}}</p>
+            <div id="description" class="text-break">
+                <p>{{post.description}}</p>
             </div>
+        </div>
+        <div id="images" class="m-auto mx-5">
+            {{#each images as |image|}}
+            <img src='{{image.imagePath}}' class="img-fluid my-2 rounded-5" />
             {{/each}}
+        </div>
+        <div id="comment-section" class="justify-content-center row">
+            <div class="col-7">
+                <input type="text" id="comment-input" class="form-control input-group-text text-break text-wrap"
+                placeholder="Leave a comment"/>
+                <br>
+                <button id="comment-button" class="btn btn-dark col-12">Submit</button>
+            </div>
+            <div id="comments" class="bg-light border border-dark col-7 justify-content-center m-3 rounded-5 row text-break">
+                {{#each comments as |comment|}}
+                <div class="border border-dark col-7 text-wrap">
+                     <p>{{comment.user.username}}</p>
+                    <p>{{comment.comment}}</p>
+                </div>
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
 <nav class="bg-light fixed-bottom justify-content-around navbar">
-        <div class="d-flex justify-content-center">
-            {{!-- homepage --}}
-            <a class="m-2 mx-5" href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
-                </svg>
-            </a>
-            {{!-- create a post --}}
-            <a class="m-2 mx-5" href="/createPost">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                </svg>
-            </a>
-            {{!-- user profile page --}}
-            <a class="m-2 mx-5" href="/{{username}}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-people-fill" viewBox="0 0 16 16">
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    <path fill-rule="evenodd"
-                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                </svg>
-            </a>
-        </div>
-    </nav>
+    <div class="d-flex justify-content-center">
+        {{!-- homepage --}}
+        <a class="m-2 mx-5" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path
+                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+            </svg>
+        </a>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{!-- create a post --}}
+        <a class="m-2 mx-5" href="/createPost">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+            </svg>
+        </a>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{!-- user profile page --}}
+        <a class="m-2 mx-5" href="/{{username}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill"
+                viewBox="0 0 16 16">
+                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                <path fill-rule="evenodd"
+                    d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+            </svg>
+        </a>
+    </div>
+</nav>
 
 <script src="/assets/js/post.js"></script>
