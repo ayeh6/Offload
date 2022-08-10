@@ -447,6 +447,8 @@ const getImageCredentials = async (req,res) => {
 const updateAboutYou = async (req,res) => {
     const aboutYou = req.body.aboutYou;
     const userID = req.session.user.userID;
+    console.log(aboutYou);
+    console.log(userID);
     try{
         await User.update(
             {
