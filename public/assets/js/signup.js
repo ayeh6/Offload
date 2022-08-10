@@ -1,27 +1,11 @@
-const usernameInput = document.getElementById('usernameInput');
-const passwordInput = document.getElementById('passwordInput');
-const signUpBtn = document.getElementById('signUpBtn');
-const signoutBtn = document.getElementById('signoutBtn');
+const usernameInputEl = document.getElementById('username-input');
+const passwordInputEl = document.getElementById('password-input');
+const signUpBtn = document.getElementById('sign-up-button');
 
-
-signoutBtn?.addEventListener('click', async () => {
-    try {
-        const response = await fetch('/api/signout', {
-            method: 'POST',
-        });
-
-        await response.json();
-        window.location.href = '/';
-    } catch (error) {
-        alert(error);
-    }
-});
-
-
-signUpBtn.addEventListener('click', async (event) => {
+const signUpUser = async (event) => {
     event.preventDefault();
-    const username = usernameInput.value;
-    const password = passwordInput.value;
+    const username = usernameInputEl.value;
+    const password = passwordInputEl.value;
 
     // checks to make sure username is not empty
     if(username.trim().length === 0){
@@ -36,7 +20,7 @@ signUpBtn.addEventListener('click', async (event) => {
 
     // posts the user input to the /api/signup endpoint
     try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch('/api/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,9 +33,11 @@ signUpBtn.addEventListener('click', async (event) => {
 
         await response.json();
         // change user window to the /users endpoint
-        window.location.href = '/todos';
+        window.location.href = '/';
     } catch (error) {
         alert(error);
     }
-});
+}
+
+signUpBtn?.addEventListener('click', signUpUser);
 

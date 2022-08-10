@@ -1,11 +1,12 @@
-const signinBtn = document.getElementById('signinBtn');
-const signinUsernameInput = document.getElementById('signinUsernameInput');
-const signinPasswordInput = document.getElementById('signinPasswordInput');
+const signInButtonEl = document.getElementById('sign-in-button');
+const signinUsernameInputEl = document.getElementById('username-input');
+const signinPasswordInputEl = document.getElementById('password-input');
 
-signinBtn.addEventListener('click', async (event) => {
+const signInUser = async (event) => {
     event.preventDefault();
-    const username = signinUsernameInput.value;
-    const password = signinPasswordInput.value;
+    console.log('clicked');
+    const username = signinUsernameInputEl.value;
+    const password = signinPasswordInputEl.value;
 
     // checks to make sure username is not empty
     if(username.trim().length === 0){
@@ -20,7 +21,7 @@ signinBtn.addEventListener('click', async (event) => {
 
     // posts the user input to the /api/signup endpoint
     try {
-        const response = await fetch('/api/signin', {
+        const response = await fetch('/api/users/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,11 +31,17 @@ signinBtn.addEventListener('click', async (event) => {
                 password,
             })
         });
-
-        await response.json();
+        
+        const responseData = await response.json();
+        if(responseData.success) {
+            window.location.href = '/';
+        } else {
+            alert("Please enter correct username and password")
+        }
         // change user window to the /users endpoint
-        window.location.href = '/todos';
     } catch (error) {
         alert(error);
     }
-});
+}
+
+signInButtonEl?.addEventListener('click', signInUser);

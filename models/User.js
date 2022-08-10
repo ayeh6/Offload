@@ -1,18 +1,19 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcryptjs');
+const { nanoid } = require('nanoid');
 
 class User extends Model {}
 
 User.init(
     {
-        id: {
+        userID: {
             type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: nanoid,
         },
         username: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(32),
             allowNull: false,
             validate: {
                 notNull: true,
@@ -25,6 +26,25 @@ User.init(
                 notNull: true,
                 len: [6],
             }
+        },
+        about: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "(empty)"
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: "N/A",
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: "N/A",
+        },
+        darkmode: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     },
     {

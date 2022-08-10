@@ -1,35 +1,49 @@
-<div class="container mb-5">
-    <div class="bg-secondary my-5 rounded-5 row text-center">
-        <h1 class="my-3 text-capitalize">{{user.username}}</h1>
-        <h1>About Me</h1>
-        <p>{{user.about}}</p>
-        <h3>Phone</h3>
-        <p>{{user.phone}}</p>
-        <h3>Email</h3>
-        <p>{{user.email}}</p>
-    </div>
-    <div class="activePosts justify-content-center row">
-        <div class="my-1 text-center">
-            <h1>My Posts</h1>
-        </div>
-        {{#each posts as |post|}}
-                <div class="card m-3" style="width: 18rem;">
-                    {{#if post.imagePath}}
-                    <img class="card-img-top rounded-5 my-2" src="{{post.imagePath}}" alt="Card image cap">
-                    {{/if}}
-                    <div class="bg-opacity-25 bg-secondary card-body rounded-pill text-break text-center">
-                        <p class="card-text">
-                            <a href="/posts/{{post.postID}}">{{post.title}}</a>
-                        </p>
-                        <p>{{post.username}}</p>
+<div class="container d-lg-grid pt-5 text-center">
+    <div
+        class="bg-gradient bg-opacity-75 bg-secondary border border-2 border-dark justify-content-center rounded-2 row shadow-lg">
+        <div id="post">
+            <div id="topbar">
+                <div id="title-username" class="col-7 m-auto">
+                    <div id="title" class="text-capitalize text-break">
+                        <h1>{{post.title}}</h1>
+                    </div>
+                    <div id="username">
+                        <h3><a href="/{{post.username}}">{{post.username}}</a></h3>
                     </div>
                 </div>
+            </div>
+            <div id="description" class="text-break">
+                <p>{{post.description}}</p>
+            </div>
+            <div class="m-auto mx-5">
+                <p>Location: {{post.location}}</p>
+            </div>
+        </div>
+        <div id="images" class="m-auto mx-5">
+            {{#each images as |image|}}
+            <img src='{{image.imagePath}}' class="img-fluid my-2 rounded-5" />
             {{/each}}
+        </div>
+        <div id="comment-section" class="justify-content-center row">
+            {{#if signedIn}}
+            <div class="col-7">
+                <input type="text" id="comment-input" class="form-control input-group-text text-break text-wrap"
+                placeholder="Leave a comment"/>
+                <br>
+                <button id="comment-button" class="btn btn-dark col-12">Submit</button>
+            </div>
+            {{/if}}
+            <div id="comments" class="bg-light border border-dark col-7 justify-content-center m-3 rounded-5 row text-break">
+                {{#each comments as |comment|}}
+                <div class="border border-dark col-7 text-wrap">
+                     <p>{{comment.user.username}}</p>
+                    <p>{{comment.comment}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>
-
-
-{{!-- bottom bar w/ home,user,post --}}
 <nav class="bg-light fixed-bottom justify-content-around navbar">
     <div class="d-flex justify-content-center">
         {{!-- homepage --}}
@@ -72,3 +86,5 @@
         </a>
     </div>
 </nav>
+
+<script src="/assets/js/post.js"></script>

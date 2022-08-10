@@ -1,0 +1,77 @@
+<div class="container d-lg-grid mb-5 pt-5 text-center">
+    <div
+        class="bg-gradient bg-opacity-75 bg-secondary border border-2 border-dark justify-content-center rounded-2 row shadow-lg">
+        <div class=" pt-4 pb-4">
+            <div>
+                <h3>Change Password</h3>
+                </br>
+                <div class="col-7 m-auto">
+                    <input id="current-password-input" type="text" class="form-control input-group-text inputUserinfo"
+                        placeholder="currentPassword">
+                    </br>
+                    <input id="new-password-input" type="text" class="form-control input-group-text inputUserinfo"
+                        placeholder="newPassword">
+                    </br>
+                    <input id="confirm-password-input" type="text" class="form-control input-group-text inputUserinfo"
+                        placeholder="confirmNewpassword">
+                    </br>
+                    <button id="save-new-password-button" class="btn btn-dark col-12">Save</button>
+                </div>
+                </br>
+                <div>
+                    <h3>About You</h3>
+                    </br>
+                    <div class="col-7 m-auto">
+                        <input type="text" id="about-you-input"
+                            class="form-control form-control input-group-text inputUserinfo" placeholder="About You">
+                        </br>
+                        <button id="save-about-you-button" class="save btn btn-dark col-12">Save</button>
+                    </div>
+                </div>
+                <div class="pt-3">
+                    <h4>Contact Sharing</h4>
+                    </br>
+                    <div class="col-7 m-auto">
+                        <input type="text" class="form-control input-group-text inputUserinfo" id="email-input"
+                            placeholder="Optional Share: Email">
+                        </br>
+                        <input type="text" class="form-control input-group-text inputUserinfo" id="phone-number-input"
+                            placeholder="Optional Share: Phone #">
+                        </br>
+                        <button id="save-contact-button" class="btn btn-dark col-12">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- bottom bar w/ home,user,post --}}
+        <nav class="bg-light fixed-bottom justify-content-around navbar">
+            <div class="d-flex justify-content-center">
+                {{!-- homepage --}}
+                <a class="m-2 mx-5" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center">
+                {{!-- create a post --}}
+                {{#if signedIn}}
+                <a class="m-2 mx-5" href="/createPost">
+                {{else}}
+                <a class="m-2 mx-5" href="/signin">
+                {{/if}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                    </svg>
+                </a>
+            </div>
+    </div>
+</div>
+</nav>
+
+
+<script src="/assets/js/settings.js"></script>
