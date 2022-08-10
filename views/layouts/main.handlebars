@@ -18,19 +18,19 @@
             <div class="my-2 row">
                 <div class="col-12 d-flex justify-content-between">
                     {{#if signedIn}}
-                    <button id="settings-button-header" class="btn btn-secondary col-auto settings"><i
+                    <button id="settings-button-header" class="btn btn-secondary col-auto m-1 settings"><i
                             class="bi bi-gear"></i></button>
                     {{/if}}
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center m-1">
                         {{!-- logo --}}
                         <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" class="img-fluid" />
                     </div>
                     {{#if signedIn}}
-                    <button id="sign-out-button-header" class="btn btn-secondary col-auto "><i
+                    <button id="sign-out-button-header" class="btn btn-secondary col-auto m-1"><i
                             class="bi bi-door-closed-fill"></i></button>
                     {{else}}
-                    <button id="sign-in-button-header" class="btn btn-secondary col-auto">Sign In</button>
-                    <button id="sign-up-button-header" class="btn btn-secondary col-auto">Sign Up</button>
+                    <button id="sign-in-button-header" class="btn btn-secondary col-auto m-1">Sign In</button>
+                    <button id="sign-up-button-header" class="btn btn-secondary col-auto m-1">Sign Up</button>
                     {{/if}}
                 </div>
             </div>
