@@ -4,7 +4,6 @@ const path = require('path');
 const getHomePage = function(req,res) {
     res.render('content', {
     });
-
 }
 
 const getSignInPage = function(req,res) {
@@ -21,7 +20,7 @@ const getUserPage = function(req,res) {
 }
 
 const getUserSettings = function(req,res) {
-    res.render('settings', {
+    res.render('profile', {
     });
 }
 
