@@ -52,7 +52,7 @@ createPostBtn.addEventListener('click', async (event) => {
             body: JSON.stringify(post),
         });
         await response.json();
-        window.location.href = '/content';
+        window.location.href = '/';
     } catch(error) {
         alert(error);
     }

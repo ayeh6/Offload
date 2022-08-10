@@ -25,7 +25,7 @@ const getUserPage = function(req,res) {
 }
 
 const getUserSettings = function(req,res) {
-    res.render('settings', {
+    res.render('profile', {
     });
 }
 
