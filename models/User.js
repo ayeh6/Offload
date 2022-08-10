@@ -27,6 +27,14 @@ User.init(
                 len: [6],
             }
         },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         darkmode: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
