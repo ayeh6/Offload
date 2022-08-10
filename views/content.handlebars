@@ -1,14 +1,4 @@
 <div class="container">
-    <div class="my-2 row">
-        <div class="col-12 d-flex justify-content-between">
-            <button class="btn btn-secondary col-auto settings"><i class="bi bi-gear"></i></button>
-            <div class="d-flex justify-content-center">
-                        {{!-- logo --}}
-                <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" />
-            </div>
-            <button id="signoutBtn" class="btn btn-secondary col-auto"><i class="bi bi-door-closed-fill"></i></button>
-        </div>
-    </div>
     <div class="row">
             {{#each posts as |post|}}
                 <div class="card m-3" style="width: 18rem;">
@@ -41,7 +31,7 @@
                 </svg>
             </a>
             {{!-- user profile page --}}
-            <a class="m-2 mx-5" href="/profile/{{username}}">
+            <a class="m-2 mx-5" href="/{{username}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-people-fill" viewBox="0 0 16 16">
                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
