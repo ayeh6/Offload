@@ -491,7 +491,6 @@ const updateContactInfo = async (req,res) => {
 
 const getUserInfo = async (req,res) => {
     username = req.body.username;
-    console.log("finding username " + username);
     try{
         const user = await User.findOne({
             attributes: [

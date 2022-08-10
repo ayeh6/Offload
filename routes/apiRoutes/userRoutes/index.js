@@ -8,7 +8,7 @@ router.route('/contact').put(apiController.updateContactInfo);
 router.route('/signin').post(apiController.signInUser);
 router.route('/signout').post(apiController.signOutUser);
 router.route('/signup').post(apiController.signUpUser);
-router.route('/posts/:username/').get(apiController.getPostsFromUser);
+router.route('/posts/:username/').post(apiController.getPostsFromUser);
 router.route('/favorites/:username').get(apiController.getFavoritePostsFromUser);
 router.route('/').post(apiController.getUserInfo);
 
