@@ -413,6 +413,7 @@ const deletePost = async (req,res) => {
 }
 
 const updateUserPassword = async (req,res) => {
+    console.log("updating password");
     const newPassword = req.body.newPassword;
     const confirmPassword = req.body.confirmPassword;
     if(newPassword !== confirmPassword) {
@@ -438,6 +439,55 @@ const getImageCredentials = async (req,res) => {
 
 }
 
+const updateAboutYou = async (req,res) => {
+    const aboutYou = req.body.aboutYou;
+    const userID = req.session.user.userID;
+    try{
+        await User.update(
+            {
+                about: aboutYou,
+            },  
+            {
+                where: {
+                    userID: userID
+                }
+            }
+        );
+        res.status(200).json("success");
+    } catch(error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+}
+
+const updateContactInfo = async (req,res) => {
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const contact = {};
+    if(email === '' && phone === '') {
+        res.status(400).json("Please enter an email or phone number");
+    } else if(email === '') {
+        contact.phone = phone;
+    } else if(phone === '') {
+        contact.email = email;
+    }
+    const userID = req.session.user.userID;
+    try {
+        await User.update(
+            contact,
+            {
+                where: {
+                    userID: userID
+                }
+            }
+        );
+        res.status(200).json("success");
+    } catch(error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+}
+
 
 module.exports = {
     createNewPost,
@@ -457,4 +507,6 @@ module.exports = {
     deletePost,
     updateUserPassword,
     getImageCredentials,
+    updateAboutYou,
+    updateContactInfo
 };
