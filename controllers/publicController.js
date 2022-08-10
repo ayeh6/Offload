@@ -57,7 +57,7 @@ const getUserPage = function(req,res) {
 
 const getUserSettings = function(req,res) {
     const signedIn = req.session.isLoggedIn;
-    res.render('profile', {
+    res.render('settings', {
         signedIn
     });
 }

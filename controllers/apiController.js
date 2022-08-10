@@ -438,10 +438,6 @@ const getImageCredentials = async (req,res) => {
 
 }
 
-const generatePostID = async (req,res) => {
-
-}
-
 
 module.exports = {
     createNewPost,
