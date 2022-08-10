@@ -40,7 +40,7 @@ const updateAboutYou = async (event) => {
     event.preventDefault();
     const aboutYou = {
         aboutYou: inputAboutYouEl.value,
-    };
+    }
     try {
         const response = await fetch('/api/users/aboutyou', {
             method: "PUT",
