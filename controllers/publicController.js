@@ -48,9 +48,22 @@ const getSignUpPage = function (req, res) {
     });
 }
 const getUserPage = async (req,res) => {
-    console.log(req.route.path);
     const signedIn = req.session.isLoggedIn;
-    //const userID = req.session.user.userID;
+
+    const username = req.params.username;
+    const userData = await User.findOne({
+        attributes: [
+            'userID',
+            'username',
+            'about',
+            'phone',
+            'email',
+        ],
+        where: {
+            username: username
+        }
+    });
+    const user = userData.get({plain: true});
     const postsData = await Post.findAll({
         attributes: [
             'postID',
@@ -72,32 +85,15 @@ const getUserPage = async (req,res) => {
             ]
         ],
         where: {
-            //userID: userID,
+            userID: user.userID,
         }
     });
-    // const userData = await User.findOne({
-    //     attributes: [
-    //         'username',
-    //         'about',
-    //         'phone',
-    //         'email',
-    //     ],
-    //     where: {
-    //         userID: userID
-    //     }
-    // });
-    // const user = userData.get({plain: true});
-    // if(user.phone === '') {
-    //     user.phone = 'N/A';
-    // }
-    // if(user.email === '') {
-    //     user.email = 'N/A';
-    // }
     const posts = postsData.map(post => post.get({plain: true}));
+    
     res.render('users', {
         signedIn,
         posts,
-        //user
+        user
     });
 }
 

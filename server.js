@@ -51,6 +51,7 @@ app.use(expsesh(sessionSettings));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.use(routes);
 
 // server listener + sequelize sync
