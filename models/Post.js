@@ -38,6 +38,7 @@ Post.init(
         },
         userID: {
             type: DataTypes.UUID,
+            allowNull: false,
             references: {
                 model: 'users',
                 key: 'userID',

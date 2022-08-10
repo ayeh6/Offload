@@ -2,11 +2,12 @@
     <div class="row">
             {{#each posts as |post|}}
                 <div class="card m-3" style="width: 18rem;">
-                    <img class="card-img-top" src="{{image.imagePath}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{post.imagePath}}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">
-                            <a href="/post/{{post.postID}}">{{post.title}}</a>
+                            <a href="/posts/{{post.postID}}">{{post.title}}</a>
                         </p>
+                        <p>{{post.username}}</p>
                     </div>
                 </div>
             {{/each}}
