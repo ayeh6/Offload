@@ -235,7 +235,7 @@ const getFavoritePostsFromUser = async (req,res) => {
 
 const signInUser = async (req,res) => {
     try {
-        console.log(req.body);
+        //console.log(req.body);
         const existingUser = await User.findOne({
             where: {
                 username: req.body.username
@@ -298,7 +298,7 @@ const createNewPost = async (req,res) => {
     //{title, description, location, images: {image1, image2}}
     try {
         //console.log(req.body);
-        console.log(req.session.user);
+        //console.log(req.session.user);
         let newPost;
         const images = req.body.images;
         if(req.body.location === '') {
@@ -315,7 +315,7 @@ const createNewPost = async (req,res) => {
                 userID: req.session.user.userID,
             });
         }
-        console.log(newPost.postID);
+        //console.log(newPost.postID);
         if(images.length > 0) {
             for(let i=0; i<images.length; i++) {
                 await Image.create({
@@ -337,11 +337,11 @@ const postNewComment = async (req,res) => {
         // Adds new comment to the database
         // post data: { comment: 'String:, PostId: 'String', UserId:'String'
         const comment = req.body.comment
-        console.log(comment);
+        //console.log(comment);
         const postId = req.body.postID
-        console.log(postId);
+        //console.log(postId);
         const userId = req.session.user.userID;
-        console.log(userId);
+        //console.log(userId);
         const newComment = {comment: comment, postID: postId, userID: userId}
         await Comment.create(newComment);
         res.status(200).json(newComment)
@@ -376,7 +376,7 @@ const deleteImage = async (req,res) => {
             }
         });
         cloudinary.v2.api.destroy(imageID, (error, result) => {
-            console.log(result, error);
+            //console.log(result, error);
         });
     } catch(error) {
         console.error(error);
@@ -471,6 +471,7 @@ const updateContactInfo = async (req,res) => {
     } else if(phone === '') {
         contact.email = email;
     }
+    console.log(contact);
     const userID = req.session.user.userID;
     try {
         await User.update(
@@ -482,6 +483,28 @@ const updateContactInfo = async (req,res) => {
             }
         );
         res.status(200).json("success");
+    } catch(error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+}
+
+const getUserInfo = async (req,res) => {
+    username = req.body.username;
+    console.log("finding username " + username);
+    try{
+        const user = await User.findOne({
+            attributes: [
+                'username',
+                'about',
+                'phone',
+                'email',
+            ],
+            where: {
+                username: username,
+            }
+        });
+        res.status(200).json(user);
     } catch(error) {
         console.error(error);
         res.status(500).json(error);
@@ -508,5 +531,6 @@ module.exports = {
     updateUserPassword,
     getImageCredentials,
     updateAboutYou,
-    updateContactInfo
+    updateContactInfo,
+    getUserInfo,
 };

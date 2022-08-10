@@ -1,8 +1,7 @@
 const fs = require('fs')
 const path = require('path');
-const {Post, Image, Comment} = require('../models');
+const {Post, Image, Comment, User} = require('../models');
 const sequelize = require('sequelize');
-const { post } = require('../routes');
 
 const getHomePage = async function(req,res) {
     const signedIn = req.session.isLoggedIn;
@@ -48,10 +47,57 @@ const getSignUpPage = function (req, res) {
     res.render('signup', {
     });
 }
-const getUserPage = function(req,res) {
+const getUserPage = async (req,res) => {
+    console.log(req.route.path);
     const signedIn = req.session.isLoggedIn;
+    //const userID = req.session.user.userID;
+    const postsData = await Post.findAll({
+        attributes: [
+            'postID',
+            'title',
+            'description',
+            'upvotes',
+            'downvotes',
+            [
+                sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
+                'comment_count'
+            ],
+            [
+                sequelize.literal(`(SELECT username FROM users WHERE posts.userID = users.userID)`),
+                'username',
+            ],
+            [
+                sequelize.literal(`(SELECT imagePath FROM images WHERE posts.postID = images.postID LIMIT 1)`),
+                'imagePath'
+            ]
+        ],
+        where: {
+            //userID: userID,
+        }
+    });
+    // const userData = await User.findOne({
+    //     attributes: [
+    //         'username',
+    //         'about',
+    //         'phone',
+    //         'email',
+    //     ],
+    //     where: {
+    //         userID: userID
+    //     }
+    // });
+    // const user = userData.get({plain: true});
+    // if(user.phone === '') {
+    //     user.phone = 'N/A';
+    // }
+    // if(user.email === '') {
+    //     user.email = 'N/A';
+    // }
+    const posts = postsData.map(post => post.get({plain: true}));
     res.render('users', {
         signedIn,
+        posts,
+        //user
     });
 }
 
