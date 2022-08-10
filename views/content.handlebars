@@ -2,9 +2,11 @@
     <div class="row justify-content-center">
         {{#each posts as |post|}}
         <div class="card m-3 bg-gradient justify-content-center" style="width: 18rem;">
+            {{#if post.imagePath}}
             <img class="card-img-top rounded-5 my-2" src="{{post.imagePath}}" alt="Card image cap">
+            {{/if}}
             <div class="bg-opacity-25 bg-secondary card-body rounded-pill text-break text-center">
-                <p class="card-text ">
+                <p class="card-text">
                     <a href="/posts/{{post.postID}}">{{post.title}}</a>
                 </p>
                 <p class="card-text"><a href="/{{post.username}}">{{post.username}}</a></p>
@@ -26,7 +28,11 @@
         </div>
         <div class="d-flex justify-content-center">
             {{!-- create a post --}}
+            {{#if signedIn}}
             <a class="m-2 mx-5" href="/createPost">
+            {{else}}
+            <a class="m-2 mx-5" href="/signin">
+            {{/if}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
@@ -36,7 +42,11 @@
         </div>
         <div class="d-flex justify-content-center">
             {{!-- user profile page --}}
-            <a class="m-2 mx-5" href="/{{username}}">
+            {{#if signedIn}}
+            <a class="m-2 mx-5" href="/{{currUsername}}">
+            {{else}}
+            <a class="m-2 mx-5" href="/signin">
+            {{/if}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-people-fill" viewBox="0 0 16 16">
                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
