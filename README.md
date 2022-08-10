@@ -106,16 +106,18 @@ node server
 ## Our process
 ​
 ### Built with
+- HTML/Javascript
+- CSS/Bootstrap
+- Node/Express
+- mySQL2/Sequelize
 - Bcrypt
-- Cloudinary
-- Sequelize
-- MySQL2
 - NanoID
+- Cloudinary
 
 ​
 ### What We learned
 
-​Andrew:
+​Andrew: What I learned from this project was implementing handlebars and how it is used to grab data from the back end directly before displaying it on the page. There were some nuiances with the req parameter such as not being able to pass a body easily (not that I know of), but it was great at making the site more dynamic saving lines of code. Handlebars is definitely a way for full-stack developers to make pages easily without the stress of making multiple lines of code for little bits and pieces.
 
 Daniel:
 
