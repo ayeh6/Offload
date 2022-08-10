@@ -46,8 +46,6 @@ const getPostFromID = async (req,res) => {
                     'description',
                     'upvotes',
                     'downvotes',
-                    'lat',
-                    'lon',
                     [
                         sequelize.literal(`(SELECT COUNT(*) FROM comments WHERE posts.postID = comments.postID)`),
                         'comment_count',
