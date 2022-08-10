@@ -27,6 +27,10 @@ User.init(
                 len: [6],
             }
         },
+        about: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         phone: {
             type: DataTypes.STRING,
             allowNull: true,
