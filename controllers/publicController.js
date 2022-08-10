@@ -169,9 +169,14 @@ const getPostPage = async (req,res) => {
 
 const getCreatePostPage = function(req,res) {
     const signedIn = req.session.isLoggedIn;
-    res.render('createPost', {
-        signedIn
-    });
+    console.log(signedIn);
+    if(signedIn === undefined || signedIn === false) {
+        return res.status(400).json("you need to be signed in");
+    } else {
+        res.render('createPost', {
+            signedIn
+        });
+    }
 }
 
 module.exports = { getHomePage, getSignInPage, getSignUpPage, getUserPage, getUserSettings, getPostPage, getCreatePostPage};
