@@ -285,7 +285,7 @@ const signUpUser = async (req,res) => {
         req.session.save(() => {
             req.session.user = newUser;
             req.session.isLoggedIn = true;
-            res.json(newUser);
+            res.json({success: true});
         });
     } catch (error) {
         console.error(error);
@@ -336,11 +336,11 @@ const postNewComment = async (req,res) => {
     try {
         // Adds new comment to the database
         // post data: { comment: 'String:, PostId: 'String', UserId:'String'
-        const comment = await(req.body.comment)
+        const comment = req.body.comment
         console.log(comment);
-        const postId = await(req.body.postID)
+        const postId = req.body.postID
         console.log(postId);
-        const userId = await(req.body.userID)
+        const userId = req.session.user.userID;
         console.log(userId);
         const newComment = {comment: comment, postID: postId, userID: userId}
         await Comment.create(newComment);

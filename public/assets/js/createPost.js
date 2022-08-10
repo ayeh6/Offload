@@ -28,11 +28,7 @@ const myWidget = cloudinary.createUploadWidget({
     }
 );
 
-uploadImgBtn.addEventListener('click', () => {
-    myWidget.open();
-});
-
-createPostBtn.addEventListener('click', async (event) => {
+const uploadPost = async (event) => {
     event.preventDefault();
     const title = addTitleInput.value;
     const description = addDescInput.value;
@@ -56,4 +52,10 @@ createPostBtn.addEventListener('click', async (event) => {
     } catch(error) {
         alert(error);
     }
+}
+
+uploadImgBtn.addEventListener('click', () => {
+    myWidget.open();
 });
+
+createPostBtn.addEventListener('click', uploadPost);
