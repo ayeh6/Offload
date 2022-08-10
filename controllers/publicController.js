@@ -34,6 +34,7 @@ const getUserSettings = function(req,res) {
 
 const getPostPage = async (req,res) => {
     const postID = req.params.postID;
+    const signedIn = req.session.isLoggedIn;
     const postQuery = await Post.findOne({
         attributes: [
             'postID',
@@ -73,6 +74,7 @@ const getPostPage = async (req,res) => {
         post,
         images,
         comments,
+        signedIn
     });
 }
 

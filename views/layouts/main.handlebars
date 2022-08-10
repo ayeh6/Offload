@@ -22,8 +22,13 @@
                         {{!-- logo --}}
                         <img src="/assets/images/OffloadLogo.png" alt="Offload Logo" />
                     </div>
+                    {{#if signedIn}}
                     <button id="signoutBtn" class="btn btn-secondary col-auto"><i
                             class="bi bi-door-closed-fill"></i></button>
+                    {{else}}
+                    <button id="signupBtn"></button>
+                    <button id="signinBtn"></button>
+                    {{/if}}
                 </div>
             </div>
             {{{body}}}
