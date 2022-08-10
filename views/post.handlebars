@@ -31,7 +31,7 @@
             <div id="comments" class="bg-light border border-dark col-7 justify-content-center m-3 rounded-5 row text-break">
                 {{#each comments as |comment|}}
                 <div class="border border-dark col-7 text-wrap">
-                    <p>{{comment.username}}</p>
+                     <p>{{comment.user.username}}</p>
                     <p>{{comment.comment}}</p>
                 </div>
                 {{/each}}

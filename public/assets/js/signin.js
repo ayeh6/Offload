@@ -33,9 +33,12 @@ const signInUser = async (event) => {
         });
         
         const responseData = await response.json();
-        console.log(responseData);
+        if(responseData.success) {
+            window.location.href = '/';
+        } else {
+            alert("Please enter correct username and password")
+        }
         // change user window to the /users endpoint
-        window.location.href = '/';
     } catch (error) {
         alert(error);
     }

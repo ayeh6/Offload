@@ -48,9 +48,22 @@ const getSignUpPage = function (req, res) {
     });
 }
 const getUserPage = async (req,res) => {
-    console.log(req.route.path);
     const signedIn = req.session.isLoggedIn;
-    //const userID = req.session.user.userID;
+
+    const username = req.params.username;
+    const userData = await User.findOne({
+        attributes: [
+            'userID',
+            'username',
+            'about',
+            'phone',
+            'email',
+        ],
+        where: {
+            username: username
+        }
+    });
+    const user = userData.get({plain: true});
     const postsData = await Post.findAll({
         attributes: [
             'postID',
@@ -72,32 +85,15 @@ const getUserPage = async (req,res) => {
             ]
         ],
         where: {
-            //userID: userID,
+            userID: user.userID,
         }
     });
-    // const userData = await User.findOne({
-    //     attributes: [
-    //         'username',
-    //         'about',
-    //         'phone',
-    //         'email',
-    //     ],
-    //     where: {
-    //         userID: userID
-    //     }
-    // });
-    // const user = userData.get({plain: true});
-    // if(user.phone === '') {
-    //     user.phone = 'N/A';
-    // }
-    // if(user.email === '') {
-    //     user.email = 'N/A';
-    // }
     const posts = postsData.map(post => post.get({plain: true}));
+
     res.render('users', {
         signedIn,
         posts,
-        //user
+        user
     });
 }
 
@@ -138,12 +134,28 @@ const getPostPage = async (req,res) => {
     const images = imagesQuery.map(image => image.get({plain: true}));
 
     const commentQuery = await Comment.findAll({
-        where: {
-            postID: postID
-        }
-    });
+        attributes: [
+                    'commentID',
+                    'comment',
+                ],
+                include: [
+                    {
+                        model: User,
+                        attributes: {
+                            exclude: [
+                                'userID',
+                                'password',
+                                'createdAt',
+                                'updatedAt',
+                            ]
+                        }
+                    },
+                ],
+                where: {
+                    postID: postID,
+                }
+            });
     const comments = commentQuery.map(comment => comment.get({plain: true}));
-
     console.log(comments);
 
     res.render('post', {
@@ -157,9 +169,14 @@ const getPostPage = async (req,res) => {
 
 const getCreatePostPage = function(req,res) {
     const signedIn = req.session.isLoggedIn;
-    res.render('createPost', {
-        signedIn
-    });
+    console.log(signedIn);
+    if(signedIn === undefined || signedIn === false) {
+        return res.status(400).json("you need to be signed in");
+    } else {
+        res.render('createPost', {
+            signedIn
+        });
+    }
 }
 
 module.exports = { getHomePage, getSignInPage, getSignUpPage, getUserPage, getUserSettings, getPostPage, getCreatePostPage};

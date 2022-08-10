@@ -16,7 +16,7 @@ const setUserData = async () => {
         body: JSON.stringify(body),
     }).then((response) => response.json())
     .then((data) => {
-        console.log(data);
+        //console.log(data);
         usernameHeaderEl.textContent = data.username;
         aboutPEl.textContent = data.about;
         phonePEl.textContent = data.phone;
@@ -25,7 +25,21 @@ const setUserData = async () => {
 }
 
 const getPostsFromUser = async () => {
-
+    const user = window.location.pathname.substring(1);
+    const body = {
+        username: user,
+    }
+    await fetch('/api/users/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+    })
 }
 
 setUserData();
