@@ -66,17 +66,30 @@ THEN I Can see their Post and comment history, their About Me,If they share thei
 
 ### Screenshots
 ​
-![screenshot](homeLandingPage)
-![screenshot](postContentPage)
-![screenshot](createPostPage)
-![screenshot](ProfilePage)
-![screenshot](UserPage)
-![screenshot](SigninPage)
-![screenshot](SigninUpPage)
+#### The Main Landing page
+![screenshot](./public/assets/images/homeLandingPage.PNG)
+
+#### An Individual Post's Page
+![screenshot](./public/assets/images/postContentPage.PNG)
+
+#### The Create a Post Page
+![screenshot](./public/assets/images/createPostPage.PNG)
+
+#### The User Settings Page
+![screenshot](./public/assets/images/userSetttings.PNG)
+
+#### The User Profile Page
+![screenshot](./public/assets/images/userPage.PNG)
+
+#### The Sign In Page
+![screenshot](./public/assets/images/signInPage.PNG)
+
+#### The Sign Up Page
+![screenshot](./public/assets/images/signUpPage.PNG)
 
 ### Links
 ​
-- 
+- Live Site URL: [Offload](https://yeh-offload.herokuapp.com/)
 ​
 
 ## Installation
@@ -130,6 +143,8 @@ I learned the importance of creating features in an organized fashion. One of th
 
 
 #### James:
+I learned a great deal about the functionality of handlebars.js and how useful it is to create dynamic webpages. I also learned a great deal from Andrew and his extensive knowledge on back end functionalities and API's. 
+
 
 #### Michael:
 Learned alot about the backend from Andrew and working with handlebars okay but will need more work on bootstrap. 
