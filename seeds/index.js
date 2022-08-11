@@ -1,7 +1,8 @@
 const users = require('./users');
 const posts = require('./posts');
+const images = require('./images');
 const comments = require('./comments');
-const {User, Post, Favorite, Comment} = require('../models');
+const {User, Post, Favorite, Comment, Image} = require('../models');
 const sequelize = require('../config/connection');
 
 const seeder = async () => {
@@ -28,10 +29,38 @@ const seeder = async () => {
     //seeding posts
     await Post.bulkCreate(posts);
 
-    //making a list of favorites
+
+    //setting postID to each image
     let allPosts = await Post.findAll({
-        attributes: ['postID']
+        attributes: ['postID'],
+        order: [
+            ['title','ASC']
+        ]
     });
+
+    let j=0;
+    for(let i=0; i<images.length; i++) {
+        images[i].postID = allPosts[j].dataValues.postID;
+        if(i !== 7) {
+            j++;
+        }
+    }
+
+    await Image.bulkCreate(images);
+    /*
+    line 43: 00 11 22 33 44 55 66 77 87 98 109
+
+    */
+    
+
+
+
+
+
+
+
+
+    //making a list of favorites
     let favorites = [];
     let fav = {};
     userindex = 0;
