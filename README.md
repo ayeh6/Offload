@@ -117,7 +117,7 @@ node server
 
 ​Andrew:
 
-Daniel:
+Daniel: Learned how to use bootstrap more in depth, working within a dynamic front-back end team, and how to use github in a team environment better, causing less issues to arise. 
 
 Jack: 
 
