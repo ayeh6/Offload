@@ -126,6 +126,8 @@ Learned how to use bootstrap more in depth, working within a dynamic front-back 
 
 
 #### Jack: 
+I learned the importance of creating features in an organized fashion. One of the hardest things that we had to navigate was adding features before our base layer front end and backend was complete. Building a web app in a controlled and organized way- making critical features functional before abstracting- is very important in coding effeciently and productively. I also learned how to use sequelize with more complex schemas and models than I had previously built.
+
 
 #### James:
 
