@@ -8,7 +8,7 @@
                         <h1>{{post.title}}</h1>
                     </div>
                     <div id="username">
-                        <h3><a href="/{{post.username}}">{{post.username}}</a></h3>
+                        <h3><a href="/users/{{post.username}}">{{post.username}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
     <div class="d-flex justify-content-center">
         {{!-- user profile page --}}
         {{#if signedIn}}
-        <a class="m-2 mx-5" href="/{{currUsername}}">
+        <a class="m-2 mx-5" href="/users/{{currUsername}}">
         {{else}}
         <a class="m-2 mx-5" href="/signin">
         {{/if}}
