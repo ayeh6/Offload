@@ -198,7 +198,7 @@ const getCreatePostPage = function(req,res) {
         currUsername = (req.session.user.username) ? req.session.user.username : undefined;
     }
 
-    console.log(signedIn);
+    //console.log(signedIn);
     if(signedIn === undefined || signedIn === false) {
         return res.status(400).json("you need to be signed in");
     } else {

@@ -17,7 +17,7 @@ router.route('/signup').get(publicController.getSignUpPage)
 router.route('/createPost').get(publicController.getCreatePostPage);
 router.route('/settings').get(publicController.getUserSettings)
 router.route('/posts/:postID').get(publicController.getPostPage);
-router.route('/:username').get(publicController.getUserPage);
+router.route('/users/:username').get(publicController.getUserPage);
 router.route('/').get(publicController.getHomePage);
 
 module.exports = router;
