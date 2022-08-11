@@ -129,7 +129,7 @@ Learned how to use bootstrap more in depth, working within a dynamic front-back 
 
 #### James:
 
-#### Michael:
+#### Michael:Learned alot about the backend from Andrew and working with handlebars okay but will need more work on bootstrap. 
 
 ​
 ### Continued development ###
