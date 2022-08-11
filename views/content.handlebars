@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
     <div class="row justify-content-center">
         {{#each posts as |post|}}
         <div class="card m-3 bg-gradient justify-content-center" style="width: 18rem;">
@@ -9,7 +9,7 @@
                 <p class="card-text">
                     <a href="/posts/{{post.postID}}">{{post.title}}</a>
                 </p>
-                <p class="card-text"><a href="/{{post.username}}">{{post.username}}</a></p>
+                <p class="card-text"><a href="/users/{{post.username}}">{{post.username}}</a></p>
             </div>
         </div>
         {{/each}}
@@ -43,7 +43,7 @@
         <div class="d-flex justify-content-center">
             {{!-- user profile page --}}
             {{#if signedIn}}
-            <a class="m-2 mx-5" href="/{{currUsername}}">
+            <a class="m-2 mx-5" href="/users/{{currUsername}}">
             {{else}}
             <a class="m-2 mx-5" href="/signin">
             {{/if}}

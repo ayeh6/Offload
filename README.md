@@ -10,8 +10,8 @@ A place to get rid of your junk
   - [Screenshot](#screenshots)
   - [Links](#links)
 - [Installation](#installation)
-  - [Package Installation](#package-installation)
-  - [Environmental Variables](#environmental-variables)
+  - [Install Packages](#install-packages)
+  - [Environmental Variables](#setup-environmental-variables)
   - [Seed Test Data](#seed-test-data)
   - [Starting Server](#starting-server)
 - [Our process](#our-process)
@@ -93,24 +93,24 @@ THEN I Can see their Post and comment history, their About Me,If they share thei
 ​
 
 ## Installation
-1. Install packages
+### Install packages
 ```javascript
 npm i
 ```
 
-2. Set up environmental variables
+### Setup environmental variables
 ```
 DB_NAME
 DB_USER
 DB_PASSWORD
 SESSION_SECRET
 ```
-3. Seed test data
+### Seed test data
 ```
 node seeds
 ```
 
-4. Starting server
+### Starting server
 ```javascript
 node server
 ```
@@ -119,24 +119,35 @@ node server
 ## Our process
 ​
 ### Built with
+- HTML/Javascript
+- CSS/Bootstrap
+- Node/Express
+- mySQL2/Sequelize
 - Bcrypt
-- Cloudinary
-- Sequelize
-- MySQL2
 - NanoID
+- Cloudinary
 
 ​
 ### What We learned
 
-​Andrew:
+#### Andrew:
+What I learned from this project was implementing handlebars and how it is used to grab data from the back end directly before displaying it on the page. There were some nuiances with the req parameter such as not being able to pass a body easily (not that I know of), but it was great at making the site more dynamic saving lines of code. Handlebars is definitely a way for full-stack developers to make pages easily without the stress of making multiple lines of code for little bits and pieces.
 
-Daniel:
 
-Jack: 
+#### Daniel:
+Learned how to use bootstrap more in depth, working within a dynamic front-back end team, and how to use github in a team environment better, causing less issues to arise. 
 
-James: I learned a great deal about the functionality of handlebars.js and how useful it is to create dynamic webpages. I also learned a great deal from Andrew and his extensive knowledge on back end functionalities and API's. 
 
-Michael:
+#### Jack: 
+I learned the importance of creating features in an organized fashion. One of the hardest things that we had to navigate was adding features before our base layer front end and backend was complete. Building a web app in a controlled and organized way- making critical features functional before abstracting- is very important in coding effeciently and productively. I also learned how to use sequelize with more complex schemas and models than I had previously built.
+
+
+#### James:
+I learned a great deal about the functionality of handlebars.js and how useful it is to create dynamic webpages. I also learned a great deal from Andrew and his extensive knowledge on back end functionalities and API's. 
+
+
+#### Michael:
+Learned alot about the backend from Andrew and working with handlebars okay but will need more work on bootstrap. 
 
 ​
 ### Continued development ###
