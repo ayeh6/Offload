@@ -10,8 +10,8 @@ A place to get rid of your junk
   - [Screenshot](#screenshots)
   - [Links](#links)
 - [Installation](#installation)
-  - [Package Installation](#package-installation)
-  - [Environmental Variables](#environmental-variables)
+  - [Install Packages](#install-packages)
+  - [Environmental Variables](#setup-environmental-variables)
   - [Seed Test Data](#seed-test-data)
   - [Starting Server](#starting-server)
 - [Our process](#our-process)
@@ -80,24 +80,24 @@ THEN I Can see their Post and comment history, their About Me,If they share thei
 ​
 
 ## Installation
-1. Install packages
+### Install packages
 ```javascript
 npm i
 ```
 
-2. Set up environmental variables
+### Setup environmental variables
 ```
 DB_NAME
 DB_USER
 DB_PASSWORD
 SESSION_SECRET
 ```
-3. Seed test data
+### Seed test data
 ```
 node seeds
 ```
 
-4. Starting server
+### Starting server
 ```javascript
 node server
 ```
@@ -117,15 +117,16 @@ node server
 ​
 ### What We learned
 
-​Andrew: What I learned from this project was implementing handlebars and how it is used to grab data from the back end directly before displaying it on the page. There were some nuiances with the req parameter such as not being able to pass a body easily (not that I know of), but it was great at making the site more dynamic saving lines of code. Handlebars is definitely a way for full-stack developers to make pages easily without the stress of making multiple lines of code for little bits and pieces.
+#### Andrew:
+What I learned from this project was implementing handlebars and how it is used to grab data from the back end directly before displaying it on the page. There were some nuiances with the req parameter such as not being able to pass a body easily (not that I know of), but it was great at making the site more dynamic saving lines of code. Handlebars is definitely a way for full-stack developers to make pages easily without the stress of making multiple lines of code for little bits and pieces.
 
-Daniel:
+#### Daniel:
 
-Jack: 
+#### Jack: 
 
-James:
+#### James:
 
-Michael:
+#### Michael:
 
 ​
 ### Continued development ###
