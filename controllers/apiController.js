@@ -468,12 +468,16 @@ const updateAboutYou = async (req,res) => {
 const updateContactInfo = async (req,res) => {
     const email = req.body.email;
     const phone = req.body.phone;
+    console.log(req.body);
     const contact = {};
     if(email === '' && phone === '') {
         res.status(400).json("Please enter an email or phone number");
     } else if(email === '') {
         contact.phone = phone;
     } else if(phone === '') {
+        contact.email = email;
+    } else {
+        contact.phone = phone;
         contact.email = email;
     }
     console.log(contact);

@@ -12,7 +12,6 @@ const saveContactButtonEl = document.getElementById("save-contact-button");
 
 const changePassword = async (event) => {
     event.preventDefault();
-    console.log("here");
     const newPasswordBody = {
         currentPassword: inputCurrentPasswordEl.value,
         newPassword: inputNewPasswordEl.value,
